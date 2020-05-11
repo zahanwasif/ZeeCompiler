@@ -51,6 +51,23 @@ reserved = {
 # Adding reserved words into the token list
 tokens = tokens + list(reserved.values())
 
+states = (
+    ('COM','exclusive'),
+)
+
+def t_COM(t):
+    r'\/\*'
+    t.lexer.begin('COM')
+
+def t_COM_end(t):
+    r'\*\/'
+    t.lexer.begin('INITIAL')
+
+def t_COM_error(t):
+    t.lexer.skip(1)
+
+t_COM_ignore = r'.'
+
 # Defining rules to te programming language
 t_ADD = r'\+'
 t_SUBTRACT = r'\-'
@@ -116,7 +133,7 @@ def t_ID(t):
     return t
 
 def t_comment(t):
-    r'\/\/.*'
+    r'\/\/.*\n'
     pass
 
 def t_newline(t):
