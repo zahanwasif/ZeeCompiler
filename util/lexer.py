@@ -24,6 +24,15 @@ tokens = [
     'LSQUARE',
     'RSQUARE',
     'EQUALS',
+    'INCREMENT',
+    'DECREMENT',
+    'GREATER',
+    'SMALLER',
+    'GEQUAL',
+    'SEQUAL',
+    'CHAR',
+    'BOOL'
+
 ]
 
 reserved = {
@@ -34,8 +43,8 @@ reserved = {
     'while' : 'WHILE',
     'do' : 'DO',
     'jump': 'JUMP',
-    'TRUE' : 'TRUE',
-    'FALSE' : 'FALSE',
+    # 'TRUE' : 'TRUE',
+    # 'FALSE' : 'FALSE',
     'break' : 'BREAK'
 }
 
@@ -53,12 +62,32 @@ t_LCURLY = r'\{'
 t_RCURLY = r'\}'
 t_LPARENTHESIS = r'\(' 
 t_RPARENTHESIS = r'\)'
+
+
+def t_GEQUAL(t):
+    r'\>[ ]*\='
+    t.value = '>='
+    return t
+
+
+def t_SEQUAL(t):
+    r'\<[ ]*\='
+    t.value = '<='
+    return t
+
+
 t_LSQUARE = r'\['
 t_RSQUARE = r'\]'
 t_EQUALS = r'\='
+t_GREATER = r'\>'
+t_SMALLER = r'\<'
 
-
-
+def t_BOOL(t):
+    r'TRUE|FALSE'
+    if (t.value == 'TRUE'):
+        t.value = True
+    else: t.value = False
+    return t
 
 def t_FLOAT(t):
     r'\d*\.\d+'
@@ -68,6 +97,11 @@ def t_FLOAT(t):
 def t_INT(t):
     r'\d+'
     t.value = int(t.value)
+    return t
+
+def t_CHAR(t):
+    r'(\'.{0,1}\')'
+    t.value=t.value[1:-1]
     return t
 
 def t_STRING(t):
