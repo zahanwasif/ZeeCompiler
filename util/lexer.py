@@ -22,8 +22,6 @@ tokens = [
     'STRING',
     'ID',
     'EQUALS',
-    'INCREMENT',
-    'DECREMENT',
     'GREATER',
     'SMALLER',
     'GEQUAL',
@@ -33,13 +31,17 @@ tokens = [
     'MODULUS',
     'NOTEQUALS',
     'EEQUALS',
+    'COMMA'
 ]
 
 reserved = {
     'if' : "IF",
     'else' : "ELSE",
     'loop' : 'LOOP',
-    'print': 'PRINT'
+    'print': 'PRINT',
+    'var' : 'VAR',
+    'inc' : 'INCREMENT',
+    'dec' : 'DECREMENT'
 }
 
 # Adding reserved words into the token list
@@ -74,8 +76,7 @@ t_RCURLY = r'\}'
 t_LPARENTHESIS = r'\(' 
 t_RPARENTHESIS = r'\)'
 t_MODULUS = r'\%'
-t_INCREMENT = r'\+\+'
-t_DECREMENT = r'\-\-'
+t_COMMA = r'\,'
 
 def t_GEQUAL(t):
     r'\>[ ]*\='
@@ -145,6 +146,7 @@ def t_comment(t):
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
+
 
 t_ignore = ' \t'
 
