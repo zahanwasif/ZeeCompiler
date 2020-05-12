@@ -145,9 +145,9 @@ def p_conditionals(p):
 
 def p_loop(p):
     '''
-    expr : LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
+    statement : LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     '''
-    p[0] = ('loop' , p[3], p[5], p[6])
+    p[0] = ('loop' , p[3], p[5], p[8])
 
 
 def p_error(p):
@@ -170,8 +170,7 @@ def run(p):
             if p[1] in dic:
                 print(dic[p[1]])
             else:
-                print("'%s' is not declared yet" % p[1])
-                raise Exception
+                print(run(p[1]))
         elif p[0] == 'printvar':
             print(p[1])
 
@@ -223,9 +222,11 @@ def run(p):
                     run(p[3])
         elif p[0] == 'loop':
             while(run(p[1])):
-                
+                run(p[3])
+                run(p[2])
 
-
+    elif p in dic:
+        return dic[p]
     else:
         return p
         
@@ -241,3 +242,4 @@ while True:
     if data == "":
         continue
     parser.parse(data)
+

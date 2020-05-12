@@ -36,7 +36,7 @@ Rule 30    expr -> CHAR
 Rule 31    expr -> BOOL
 Rule 32    statement -> IF expr LCURLY statement RCURLY
 Rule 33    statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
-Rule 34    expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
+Rule 34    statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
 
 Terminals, with rules where they appear
 
@@ -79,8 +79,8 @@ Nonterminals, with rules where they appear
 empty                : 2
 expr                 : 6 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 25 32 33 34 34
 start                : 0
-statement            : 3 4 8 9 32 33 33
-statements           : 1 3 34
+statement            : 3 4 8 9 32 33 33 34
+statements           : 1 3
 
 Parsing method: LALR
 
@@ -99,6 +99,7 @@ state 0
     (10) statement -> . expr
     (32) statement -> . IF expr LCURLY statement RCURLY
     (33) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (34) statement -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -120,18 +121,17 @@ state 0
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     $end            reduce using rule 5 (empty -> .)
     ID              shift and go to state 5
     PRINT           shift and go to state 7
     IF              shift and go to state 8
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    LOOP            shift and go to state 9
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     start                          shift and go to state 1
     statements                     shift and go to state 2
@@ -156,6 +156,7 @@ state 2
     (10) statement -> . expr
     (32) statement -> . IF expr LCURLY statement RCURLY
     (33) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (34) statement -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -177,18 +178,17 @@ state 2
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     $end            reduce using rule 1 (start -> statements .)
     ID              shift and go to state 5
     PRINT           shift and go to state 7
     IF              shift and go to state 8
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    LOOP            shift and go to state 9
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     statement                      shift and go to state 15
     expr                           shift and go to state 6
@@ -207,14 +207,13 @@ state 4
     ID              reduce using rule 4 (statements -> statement .)
     PRINT           reduce using rule 4 (statements -> statement .)
     IF              reduce using rule 4 (statements -> statement .)
+    LOOP            reduce using rule 4 (statements -> statement .)
     INT             reduce using rule 4 (statements -> statement .)
     FLOAT           reduce using rule 4 (statements -> statement .)
     STRING          reduce using rule 4 (statements -> statement .)
     CHAR            reduce using rule 4 (statements -> statement .)
     BOOL            reduce using rule 4 (statements -> statement .)
-    LOOP            reduce using rule 4 (statements -> statement .)
     $end            reduce using rule 4 (statements -> statement .)
-    RCURLY          reduce using rule 4 (statements -> statement .)
 
 
 state 5
@@ -242,12 +241,12 @@ state 5
     ID              reduce using rule 26 (expr -> ID .)
     PRINT           reduce using rule 26 (expr -> ID .)
     IF              reduce using rule 26 (expr -> ID .)
+    LOOP            reduce using rule 26 (expr -> ID .)
     INT             reduce using rule 26 (expr -> ID .)
     FLOAT           reduce using rule 26 (expr -> ID .)
     STRING          reduce using rule 26 (expr -> ID .)
     CHAR            reduce using rule 26 (expr -> ID .)
     BOOL            reduce using rule 26 (expr -> ID .)
-    LOOP            reduce using rule 26 (expr -> ID .)
     $end            reduce using rule 26 (expr -> ID .)
     RPARENTHESIS    reduce using rule 26 (expr -> ID .)
     RCURLY          reduce using rule 26 (expr -> ID .)
@@ -275,12 +274,12 @@ state 6
     ID              reduce using rule 10 (statement -> expr .)
     PRINT           reduce using rule 10 (statement -> expr .)
     IF              reduce using rule 10 (statement -> expr .)
+    LOOP            reduce using rule 10 (statement -> expr .)
     INT             reduce using rule 10 (statement -> expr .)
     FLOAT           reduce using rule 10 (statement -> expr .)
     STRING          reduce using rule 10 (statement -> expr .)
     CHAR            reduce using rule 10 (statement -> expr .)
     BOOL            reduce using rule 10 (statement -> expr .)
-    LOOP            reduce using rule 10 (statement -> expr .)
     $end            reduce using rule 10 (statement -> expr .)
     RPARENTHESIS    reduce using rule 10 (statement -> expr .)
     RCURLY          reduce using rule 10 (statement -> expr .)
@@ -334,19 +333,24 @@ state 8
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 33
 
 state 9
+
+    (34) statement -> LOOP . LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
+
+    LPARENTHESIS    shift and go to state 35
+
+
+state 10
 
     (27) expr -> INT .
 
@@ -368,12 +372,12 @@ state 9
     ID              reduce using rule 27 (expr -> INT .)
     PRINT           reduce using rule 27 (expr -> INT .)
     IF              reduce using rule 27 (expr -> INT .)
+    LOOP            reduce using rule 27 (expr -> INT .)
     INT             reduce using rule 27 (expr -> INT .)
     FLOAT           reduce using rule 27 (expr -> INT .)
     STRING          reduce using rule 27 (expr -> INT .)
     CHAR            reduce using rule 27 (expr -> INT .)
     BOOL            reduce using rule 27 (expr -> INT .)
-    LOOP            reduce using rule 27 (expr -> INT .)
     $end            reduce using rule 27 (expr -> INT .)
     LCURLY          reduce using rule 27 (expr -> INT .)
     RPARENTHESIS    reduce using rule 27 (expr -> INT .)
@@ -381,7 +385,7 @@ state 9
     COMMA           reduce using rule 27 (expr -> INT .)
 
 
-state 10
+state 11
 
     (28) expr -> FLOAT .
 
@@ -403,12 +407,12 @@ state 10
     ID              reduce using rule 28 (expr -> FLOAT .)
     PRINT           reduce using rule 28 (expr -> FLOAT .)
     IF              reduce using rule 28 (expr -> FLOAT .)
+    LOOP            reduce using rule 28 (expr -> FLOAT .)
     INT             reduce using rule 28 (expr -> FLOAT .)
     FLOAT           reduce using rule 28 (expr -> FLOAT .)
     STRING          reduce using rule 28 (expr -> FLOAT .)
     CHAR            reduce using rule 28 (expr -> FLOAT .)
     BOOL            reduce using rule 28 (expr -> FLOAT .)
-    LOOP            reduce using rule 28 (expr -> FLOAT .)
     $end            reduce using rule 28 (expr -> FLOAT .)
     LCURLY          reduce using rule 28 (expr -> FLOAT .)
     RPARENTHESIS    reduce using rule 28 (expr -> FLOAT .)
@@ -416,7 +420,7 @@ state 10
     COMMA           reduce using rule 28 (expr -> FLOAT .)
 
 
-state 11
+state 12
 
     (29) expr -> STRING .
 
@@ -438,12 +442,12 @@ state 11
     ID              reduce using rule 29 (expr -> STRING .)
     PRINT           reduce using rule 29 (expr -> STRING .)
     IF              reduce using rule 29 (expr -> STRING .)
+    LOOP            reduce using rule 29 (expr -> STRING .)
     INT             reduce using rule 29 (expr -> STRING .)
     FLOAT           reduce using rule 29 (expr -> STRING .)
     STRING          reduce using rule 29 (expr -> STRING .)
     CHAR            reduce using rule 29 (expr -> STRING .)
     BOOL            reduce using rule 29 (expr -> STRING .)
-    LOOP            reduce using rule 29 (expr -> STRING .)
     $end            reduce using rule 29 (expr -> STRING .)
     LCURLY          reduce using rule 29 (expr -> STRING .)
     RPARENTHESIS    reduce using rule 29 (expr -> STRING .)
@@ -451,7 +455,7 @@ state 11
     COMMA           reduce using rule 29 (expr -> STRING .)
 
 
-state 12
+state 13
 
     (30) expr -> CHAR .
 
@@ -473,12 +477,12 @@ state 12
     ID              reduce using rule 30 (expr -> CHAR .)
     PRINT           reduce using rule 30 (expr -> CHAR .)
     IF              reduce using rule 30 (expr -> CHAR .)
+    LOOP            reduce using rule 30 (expr -> CHAR .)
     INT             reduce using rule 30 (expr -> CHAR .)
     FLOAT           reduce using rule 30 (expr -> CHAR .)
     STRING          reduce using rule 30 (expr -> CHAR .)
     CHAR            reduce using rule 30 (expr -> CHAR .)
     BOOL            reduce using rule 30 (expr -> CHAR .)
-    LOOP            reduce using rule 30 (expr -> CHAR .)
     $end            reduce using rule 30 (expr -> CHAR .)
     LCURLY          reduce using rule 30 (expr -> CHAR .)
     RPARENTHESIS    reduce using rule 30 (expr -> CHAR .)
@@ -486,7 +490,7 @@ state 12
     COMMA           reduce using rule 30 (expr -> CHAR .)
 
 
-state 13
+state 14
 
     (31) expr -> BOOL .
 
@@ -508,24 +512,17 @@ state 13
     ID              reduce using rule 31 (expr -> BOOL .)
     PRINT           reduce using rule 31 (expr -> BOOL .)
     IF              reduce using rule 31 (expr -> BOOL .)
+    LOOP            reduce using rule 31 (expr -> BOOL .)
     INT             reduce using rule 31 (expr -> BOOL .)
     FLOAT           reduce using rule 31 (expr -> BOOL .)
     STRING          reduce using rule 31 (expr -> BOOL .)
     CHAR            reduce using rule 31 (expr -> BOOL .)
     BOOL            reduce using rule 31 (expr -> BOOL .)
-    LOOP            reduce using rule 31 (expr -> BOOL .)
     $end            reduce using rule 31 (expr -> BOOL .)
     LCURLY          reduce using rule 31 (expr -> BOOL .)
     RPARENTHESIS    reduce using rule 31 (expr -> BOOL .)
     RCURLY          reduce using rule 31 (expr -> BOOL .)
     COMMA           reduce using rule 31 (expr -> BOOL .)
-
-
-state 14
-
-    (34) expr -> LOOP . LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
-
-    LPARENTHESIS    shift and go to state 35
 
 
 state 15
@@ -535,14 +532,13 @@ state 15
     ID              reduce using rule 3 (statements -> statements statement .)
     PRINT           reduce using rule 3 (statements -> statements statement .)
     IF              reduce using rule 3 (statements -> statements statement .)
+    LOOP            reduce using rule 3 (statements -> statements statement .)
     INT             reduce using rule 3 (statements -> statements statement .)
     FLOAT           reduce using rule 3 (statements -> statements statement .)
     STRING          reduce using rule 3 (statements -> statements statement .)
     CHAR            reduce using rule 3 (statements -> statements statement .)
     BOOL            reduce using rule 3 (statements -> statements statement .)
-    LOOP            reduce using rule 3 (statements -> statements statement .)
     $end            reduce using rule 3 (statements -> statements statement .)
-    RCURLY          reduce using rule 3 (statements -> statements statement .)
 
 
 state 16
@@ -570,15 +566,13 @@ state 16
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 36
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 37
 
@@ -606,15 +600,13 @@ state 17
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 38
 
@@ -642,15 +634,13 @@ state 18
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 39
 
@@ -678,15 +668,13 @@ state 19
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 40
 
@@ -714,15 +702,13 @@ state 20
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 41
 
@@ -750,15 +736,13 @@ state 21
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 42
 
@@ -786,15 +770,13 @@ state 22
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 43
 
@@ -822,15 +804,13 @@ state 23
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 44
 
@@ -858,15 +838,13 @@ state 24
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 45
 
@@ -894,15 +872,13 @@ state 25
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 46
 
@@ -930,15 +906,13 @@ state 26
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 47
 
@@ -966,15 +940,13 @@ state 27
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 48
 
@@ -1002,15 +974,13 @@ state 28
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 49
 
@@ -1038,15 +1008,13 @@ state 29
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 50
 
@@ -1072,12 +1040,12 @@ state 30
     ID              reduce using rule 24 (expr -> expr INCREMENT .)
     PRINT           reduce using rule 24 (expr -> expr INCREMENT .)
     IF              reduce using rule 24 (expr -> expr INCREMENT .)
+    LOOP            reduce using rule 24 (expr -> expr INCREMENT .)
     INT             reduce using rule 24 (expr -> expr INCREMENT .)
     FLOAT           reduce using rule 24 (expr -> expr INCREMENT .)
     STRING          reduce using rule 24 (expr -> expr INCREMENT .)
     CHAR            reduce using rule 24 (expr -> expr INCREMENT .)
     BOOL            reduce using rule 24 (expr -> expr INCREMENT .)
-    LOOP            reduce using rule 24 (expr -> expr INCREMENT .)
     $end            reduce using rule 24 (expr -> expr INCREMENT .)
     LCURLY          reduce using rule 24 (expr -> expr INCREMENT .)
     RPARENTHESIS    reduce using rule 24 (expr -> expr INCREMENT .)
@@ -1107,12 +1075,12 @@ state 31
     ID              reduce using rule 25 (expr -> expr DECREMENT .)
     PRINT           reduce using rule 25 (expr -> expr DECREMENT .)
     IF              reduce using rule 25 (expr -> expr DECREMENT .)
+    LOOP            reduce using rule 25 (expr -> expr DECREMENT .)
     INT             reduce using rule 25 (expr -> expr DECREMENT .)
     FLOAT           reduce using rule 25 (expr -> expr DECREMENT .)
     STRING          reduce using rule 25 (expr -> expr DECREMENT .)
     CHAR            reduce using rule 25 (expr -> expr DECREMENT .)
     BOOL            reduce using rule 25 (expr -> expr DECREMENT .)
-    LOOP            reduce using rule 25 (expr -> expr DECREMENT .)
     $end            reduce using rule 25 (expr -> expr DECREMENT .)
     LCURLY          reduce using rule 25 (expr -> expr DECREMENT .)
     RPARENTHESIS    reduce using rule 25 (expr -> expr DECREMENT .)
@@ -1131,6 +1099,7 @@ state 32
     (10) statement -> . expr
     (32) statement -> . IF expr LCURLY statement RCURLY
     (33) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (34) statement -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -1152,18 +1121,17 @@ state 32
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     VAR             shift and go to state 51
     ID              shift and go to state 5
     PRINT           shift and go to state 7
     IF              shift and go to state 8
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    LOOP            shift and go to state 9
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     statement                      shift and go to state 52
     expr                           shift and go to state 6
@@ -1229,12 +1197,12 @@ state 34
     ID              reduce using rule 26 (expr -> ID .)
     PRINT           reduce using rule 26 (expr -> ID .)
     IF              reduce using rule 26 (expr -> ID .)
+    LOOP            reduce using rule 26 (expr -> ID .)
     INT             reduce using rule 26 (expr -> ID .)
     FLOAT           reduce using rule 26 (expr -> ID .)
     STRING          reduce using rule 26 (expr -> ID .)
     CHAR            reduce using rule 26 (expr -> ID .)
     BOOL            reduce using rule 26 (expr -> ID .)
-    LOOP            reduce using rule 26 (expr -> ID .)
     $end            reduce using rule 26 (expr -> ID .)
     RPARENTHESIS    reduce using rule 26 (expr -> ID .)
     RCURLY          reduce using rule 26 (expr -> ID .)
@@ -1243,7 +1211,7 @@ state 34
 
 state 35
 
-    (34) expr -> LOOP LPARENTHESIS . expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
+    (34) statement -> LOOP LPARENTHESIS . expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -1265,15 +1233,13 @@ state 35
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 54
 
@@ -1285,24 +1251,24 @@ state 36
   ! reduce/reduce conflict for ID resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for PRINT resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for IF resolved using rule 7 (statement -> ID EQUALS ID .)
+  ! reduce/reduce conflict for LOOP resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for INT resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for FLOAT resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for STRING resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for CHAR resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for BOOL resolved using rule 7 (statement -> ID EQUALS ID .)
-  ! reduce/reduce conflict for LOOP resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for $end resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for RPARENTHESIS resolved using rule 7 (statement -> ID EQUALS ID .)
   ! reduce/reduce conflict for RCURLY resolved using rule 7 (statement -> ID EQUALS ID .)
     ID              reduce using rule 7 (statement -> ID EQUALS ID .)
     PRINT           reduce using rule 7 (statement -> ID EQUALS ID .)
     IF              reduce using rule 7 (statement -> ID EQUALS ID .)
+    LOOP            reduce using rule 7 (statement -> ID EQUALS ID .)
     INT             reduce using rule 7 (statement -> ID EQUALS ID .)
     FLOAT           reduce using rule 7 (statement -> ID EQUALS ID .)
     STRING          reduce using rule 7 (statement -> ID EQUALS ID .)
     CHAR            reduce using rule 7 (statement -> ID EQUALS ID .)
     BOOL            reduce using rule 7 (statement -> ID EQUALS ID .)
-    LOOP            reduce using rule 7 (statement -> ID EQUALS ID .)
     $end            reduce using rule 7 (statement -> ID EQUALS ID .)
     RPARENTHESIS    reduce using rule 7 (statement -> ID EQUALS ID .)
     RCURLY          reduce using rule 7 (statement -> ID EQUALS ID .)
@@ -1325,12 +1291,12 @@ state 36
   ! ID              [ reduce using rule 26 (expr -> ID .) ]
   ! PRINT           [ reduce using rule 26 (expr -> ID .) ]
   ! IF              [ reduce using rule 26 (expr -> ID .) ]
+  ! LOOP            [ reduce using rule 26 (expr -> ID .) ]
   ! INT             [ reduce using rule 26 (expr -> ID .) ]
   ! FLOAT           [ reduce using rule 26 (expr -> ID .) ]
   ! STRING          [ reduce using rule 26 (expr -> ID .) ]
   ! CHAR            [ reduce using rule 26 (expr -> ID .) ]
   ! BOOL            [ reduce using rule 26 (expr -> ID .) ]
-  ! LOOP            [ reduce using rule 26 (expr -> ID .) ]
   ! $end            [ reduce using rule 26 (expr -> ID .) ]
   ! RPARENTHESIS    [ reduce using rule 26 (expr -> ID .) ]
   ! RCURLY          [ reduce using rule 26 (expr -> ID .) ]
@@ -1358,12 +1324,12 @@ state 37
     ID              reduce using rule 6 (statement -> ID EQUALS expr .)
     PRINT           reduce using rule 6 (statement -> ID EQUALS expr .)
     IF              reduce using rule 6 (statement -> ID EQUALS expr .)
+    LOOP            reduce using rule 6 (statement -> ID EQUALS expr .)
     INT             reduce using rule 6 (statement -> ID EQUALS expr .)
     FLOAT           reduce using rule 6 (statement -> ID EQUALS expr .)
     STRING          reduce using rule 6 (statement -> ID EQUALS expr .)
     CHAR            reduce using rule 6 (statement -> ID EQUALS expr .)
     BOOL            reduce using rule 6 (statement -> ID EQUALS expr .)
-    LOOP            reduce using rule 6 (statement -> ID EQUALS expr .)
     $end            reduce using rule 6 (statement -> ID EQUALS expr .)
     RPARENTHESIS    reduce using rule 6 (statement -> ID EQUALS expr .)
     RCURLY          reduce using rule 6 (statement -> ID EQUALS expr .)
@@ -1421,12 +1387,12 @@ state 38
     ID              reduce using rule 11 (expr -> expr DIVIDE expr .)
     PRINT           reduce using rule 11 (expr -> expr DIVIDE expr .)
     IF              reduce using rule 11 (expr -> expr DIVIDE expr .)
+    LOOP            reduce using rule 11 (expr -> expr DIVIDE expr .)
     INT             reduce using rule 11 (expr -> expr DIVIDE expr .)
     FLOAT           reduce using rule 11 (expr -> expr DIVIDE expr .)
     STRING          reduce using rule 11 (expr -> expr DIVIDE expr .)
     CHAR            reduce using rule 11 (expr -> expr DIVIDE expr .)
     BOOL            reduce using rule 11 (expr -> expr DIVIDE expr .)
-    LOOP            reduce using rule 11 (expr -> expr DIVIDE expr .)
     $end            reduce using rule 11 (expr -> expr DIVIDE expr .)
     LCURLY          reduce using rule 11 (expr -> expr DIVIDE expr .)
     RPARENTHESIS    reduce using rule 11 (expr -> expr DIVIDE expr .)
@@ -1487,12 +1453,12 @@ state 39
     ID              reduce using rule 12 (expr -> expr MULTIPLY expr .)
     PRINT           reduce using rule 12 (expr -> expr MULTIPLY expr .)
     IF              reduce using rule 12 (expr -> expr MULTIPLY expr .)
+    LOOP            reduce using rule 12 (expr -> expr MULTIPLY expr .)
     INT             reduce using rule 12 (expr -> expr MULTIPLY expr .)
     FLOAT           reduce using rule 12 (expr -> expr MULTIPLY expr .)
     STRING          reduce using rule 12 (expr -> expr MULTIPLY expr .)
     CHAR            reduce using rule 12 (expr -> expr MULTIPLY expr .)
     BOOL            reduce using rule 12 (expr -> expr MULTIPLY expr .)
-    LOOP            reduce using rule 12 (expr -> expr MULTIPLY expr .)
     $end            reduce using rule 12 (expr -> expr MULTIPLY expr .)
     LCURLY          reduce using rule 12 (expr -> expr MULTIPLY expr .)
     RPARENTHESIS    reduce using rule 12 (expr -> expr MULTIPLY expr .)
@@ -1550,12 +1516,12 @@ state 40
     ID              reduce using rule 13 (expr -> expr ADD expr .)
     PRINT           reduce using rule 13 (expr -> expr ADD expr .)
     IF              reduce using rule 13 (expr -> expr ADD expr .)
+    LOOP            reduce using rule 13 (expr -> expr ADD expr .)
     INT             reduce using rule 13 (expr -> expr ADD expr .)
     FLOAT           reduce using rule 13 (expr -> expr ADD expr .)
     STRING          reduce using rule 13 (expr -> expr ADD expr .)
     CHAR            reduce using rule 13 (expr -> expr ADD expr .)
     BOOL            reduce using rule 13 (expr -> expr ADD expr .)
-    LOOP            reduce using rule 13 (expr -> expr ADD expr .)
     $end            reduce using rule 13 (expr -> expr ADD expr .)
     LCURLY          reduce using rule 13 (expr -> expr ADD expr .)
     RPARENTHESIS    reduce using rule 13 (expr -> expr ADD expr .)
@@ -1616,12 +1582,12 @@ state 41
     ID              reduce using rule 14 (expr -> expr SUBTRACT expr .)
     PRINT           reduce using rule 14 (expr -> expr SUBTRACT expr .)
     IF              reduce using rule 14 (expr -> expr SUBTRACT expr .)
+    LOOP            reduce using rule 14 (expr -> expr SUBTRACT expr .)
     INT             reduce using rule 14 (expr -> expr SUBTRACT expr .)
     FLOAT           reduce using rule 14 (expr -> expr SUBTRACT expr .)
     STRING          reduce using rule 14 (expr -> expr SUBTRACT expr .)
     CHAR            reduce using rule 14 (expr -> expr SUBTRACT expr .)
     BOOL            reduce using rule 14 (expr -> expr SUBTRACT expr .)
-    LOOP            reduce using rule 14 (expr -> expr SUBTRACT expr .)
     $end            reduce using rule 14 (expr -> expr SUBTRACT expr .)
     LCURLY          reduce using rule 14 (expr -> expr SUBTRACT expr .)
     RPARENTHESIS    reduce using rule 14 (expr -> expr SUBTRACT expr .)
@@ -1685,12 +1651,12 @@ state 42
     ID              reduce using rule 15 (expr -> expr MODULUS expr .)
     PRINT           reduce using rule 15 (expr -> expr MODULUS expr .)
     IF              reduce using rule 15 (expr -> expr MODULUS expr .)
+    LOOP            reduce using rule 15 (expr -> expr MODULUS expr .)
     INT             reduce using rule 15 (expr -> expr MODULUS expr .)
     FLOAT           reduce using rule 15 (expr -> expr MODULUS expr .)
     STRING          reduce using rule 15 (expr -> expr MODULUS expr .)
     CHAR            reduce using rule 15 (expr -> expr MODULUS expr .)
     BOOL            reduce using rule 15 (expr -> expr MODULUS expr .)
-    LOOP            reduce using rule 15 (expr -> expr MODULUS expr .)
     $end            reduce using rule 15 (expr -> expr MODULUS expr .)
     LCURLY          reduce using rule 15 (expr -> expr MODULUS expr .)
     RPARENTHESIS    reduce using rule 15 (expr -> expr MODULUS expr .)
@@ -1751,12 +1717,12 @@ state 43
     ID              reduce using rule 16 (expr -> expr EEQUALS expr .)
     PRINT           reduce using rule 16 (expr -> expr EEQUALS expr .)
     IF              reduce using rule 16 (expr -> expr EEQUALS expr .)
+    LOOP            reduce using rule 16 (expr -> expr EEQUALS expr .)
     INT             reduce using rule 16 (expr -> expr EEQUALS expr .)
     FLOAT           reduce using rule 16 (expr -> expr EEQUALS expr .)
     STRING          reduce using rule 16 (expr -> expr EEQUALS expr .)
     CHAR            reduce using rule 16 (expr -> expr EEQUALS expr .)
     BOOL            reduce using rule 16 (expr -> expr EEQUALS expr .)
-    LOOP            reduce using rule 16 (expr -> expr EEQUALS expr .)
     $end            reduce using rule 16 (expr -> expr EEQUALS expr .)
     LCURLY          reduce using rule 16 (expr -> expr EEQUALS expr .)
     RPARENTHESIS    reduce using rule 16 (expr -> expr EEQUALS expr .)
@@ -1827,12 +1793,12 @@ state 44
     ID              reduce using rule 17 (expr -> expr GREATER expr .)
     PRINT           reduce using rule 17 (expr -> expr GREATER expr .)
     IF              reduce using rule 17 (expr -> expr GREATER expr .)
+    LOOP            reduce using rule 17 (expr -> expr GREATER expr .)
     INT             reduce using rule 17 (expr -> expr GREATER expr .)
     FLOAT           reduce using rule 17 (expr -> expr GREATER expr .)
     STRING          reduce using rule 17 (expr -> expr GREATER expr .)
     CHAR            reduce using rule 17 (expr -> expr GREATER expr .)
     BOOL            reduce using rule 17 (expr -> expr GREATER expr .)
-    LOOP            reduce using rule 17 (expr -> expr GREATER expr .)
     $end            reduce using rule 17 (expr -> expr GREATER expr .)
     LCURLY          reduce using rule 17 (expr -> expr GREATER expr .)
     RPARENTHESIS    reduce using rule 17 (expr -> expr GREATER expr .)
@@ -1893,12 +1859,12 @@ state 45
     ID              reduce using rule 18 (expr -> expr SMALLER expr .)
     PRINT           reduce using rule 18 (expr -> expr SMALLER expr .)
     IF              reduce using rule 18 (expr -> expr SMALLER expr .)
+    LOOP            reduce using rule 18 (expr -> expr SMALLER expr .)
     INT             reduce using rule 18 (expr -> expr SMALLER expr .)
     FLOAT           reduce using rule 18 (expr -> expr SMALLER expr .)
     STRING          reduce using rule 18 (expr -> expr SMALLER expr .)
     CHAR            reduce using rule 18 (expr -> expr SMALLER expr .)
     BOOL            reduce using rule 18 (expr -> expr SMALLER expr .)
-    LOOP            reduce using rule 18 (expr -> expr SMALLER expr .)
     $end            reduce using rule 18 (expr -> expr SMALLER expr .)
     LCURLY          reduce using rule 18 (expr -> expr SMALLER expr .)
     RPARENTHESIS    reduce using rule 18 (expr -> expr SMALLER expr .)
@@ -1955,12 +1921,12 @@ state 46
     ID              reduce using rule 19 (expr -> expr AND expr .)
     PRINT           reduce using rule 19 (expr -> expr AND expr .)
     IF              reduce using rule 19 (expr -> expr AND expr .)
+    LOOP            reduce using rule 19 (expr -> expr AND expr .)
     INT             reduce using rule 19 (expr -> expr AND expr .)
     FLOAT           reduce using rule 19 (expr -> expr AND expr .)
     STRING          reduce using rule 19 (expr -> expr AND expr .)
     CHAR            reduce using rule 19 (expr -> expr AND expr .)
     BOOL            reduce using rule 19 (expr -> expr AND expr .)
-    LOOP            reduce using rule 19 (expr -> expr AND expr .)
     $end            reduce using rule 19 (expr -> expr AND expr .)
     LCURLY          reduce using rule 19 (expr -> expr AND expr .)
     RPARENTHESIS    reduce using rule 19 (expr -> expr AND expr .)
@@ -2021,12 +1987,12 @@ state 47
     ID              reduce using rule 20 (expr -> expr OR expr .)
     PRINT           reduce using rule 20 (expr -> expr OR expr .)
     IF              reduce using rule 20 (expr -> expr OR expr .)
+    LOOP            reduce using rule 20 (expr -> expr OR expr .)
     INT             reduce using rule 20 (expr -> expr OR expr .)
     FLOAT           reduce using rule 20 (expr -> expr OR expr .)
     STRING          reduce using rule 20 (expr -> expr OR expr .)
     CHAR            reduce using rule 20 (expr -> expr OR expr .)
     BOOL            reduce using rule 20 (expr -> expr OR expr .)
-    LOOP            reduce using rule 20 (expr -> expr OR expr .)
     $end            reduce using rule 20 (expr -> expr OR expr .)
     LCURLY          reduce using rule 20 (expr -> expr OR expr .)
     RPARENTHESIS    reduce using rule 20 (expr -> expr OR expr .)
@@ -2096,12 +2062,12 @@ state 48
     ID              reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     PRINT           reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     IF              reduce using rule 21 (expr -> expr NOTEQUALS expr .)
+    LOOP            reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     INT             reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     FLOAT           reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     STRING          reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     CHAR            reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     BOOL            reduce using rule 21 (expr -> expr NOTEQUALS expr .)
-    LOOP            reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     $end            reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     LCURLY          reduce using rule 21 (expr -> expr NOTEQUALS expr .)
     RPARENTHESIS    reduce using rule 21 (expr -> expr NOTEQUALS expr .)
@@ -2172,12 +2138,12 @@ state 49
     ID              reduce using rule 22 (expr -> expr GEQUAL expr .)
     PRINT           reduce using rule 22 (expr -> expr GEQUAL expr .)
     IF              reduce using rule 22 (expr -> expr GEQUAL expr .)
+    LOOP            reduce using rule 22 (expr -> expr GEQUAL expr .)
     INT             reduce using rule 22 (expr -> expr GEQUAL expr .)
     FLOAT           reduce using rule 22 (expr -> expr GEQUAL expr .)
     STRING          reduce using rule 22 (expr -> expr GEQUAL expr .)
     CHAR            reduce using rule 22 (expr -> expr GEQUAL expr .)
     BOOL            reduce using rule 22 (expr -> expr GEQUAL expr .)
-    LOOP            reduce using rule 22 (expr -> expr GEQUAL expr .)
     $end            reduce using rule 22 (expr -> expr GEQUAL expr .)
     LCURLY          reduce using rule 22 (expr -> expr GEQUAL expr .)
     RPARENTHESIS    reduce using rule 22 (expr -> expr GEQUAL expr .)
@@ -2238,12 +2204,12 @@ state 50
     ID              reduce using rule 23 (expr -> expr SEQUAL expr .)
     PRINT           reduce using rule 23 (expr -> expr SEQUAL expr .)
     IF              reduce using rule 23 (expr -> expr SEQUAL expr .)
+    LOOP            reduce using rule 23 (expr -> expr SEQUAL expr .)
     INT             reduce using rule 23 (expr -> expr SEQUAL expr .)
     FLOAT           reduce using rule 23 (expr -> expr SEQUAL expr .)
     STRING          reduce using rule 23 (expr -> expr SEQUAL expr .)
     CHAR            reduce using rule 23 (expr -> expr SEQUAL expr .)
     BOOL            reduce using rule 23 (expr -> expr SEQUAL expr .)
-    LOOP            reduce using rule 23 (expr -> expr SEQUAL expr .)
     $end            reduce using rule 23 (expr -> expr SEQUAL expr .)
     LCURLY          reduce using rule 23 (expr -> expr SEQUAL expr .)
     RPARENTHESIS    reduce using rule 23 (expr -> expr SEQUAL expr .)
@@ -2297,6 +2263,7 @@ state 53
     (10) statement -> . expr
     (32) statement -> . IF expr LCURLY statement RCURLY
     (33) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (34) statement -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -2318,24 +2285,23 @@ state 53
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 5
     PRINT           shift and go to state 7
     IF              shift and go to state 8
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    LOOP            shift and go to state 9
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 6
     statement                      shift and go to state 57
 
 state 54
 
-    (34) expr -> LOOP LPARENTHESIS expr . COMMA expr RPARENTHESIS LCURLY statements RCURLY
+    (34) statement -> LOOP LPARENTHESIS expr . COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> expr . DIVIDE expr
     (12) expr -> expr . MULTIPLY expr
     (13) expr -> expr . ADD expr
@@ -2380,6 +2346,7 @@ state 55
     (10) statement -> . expr
     (32) statement -> . IF expr LCURLY statement RCURLY
     (33) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (34) statement -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -2401,17 +2368,16 @@ state 55
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 5
     PRINT           shift and go to state 7
     IF              shift and go to state 8
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    LOOP            shift and go to state 9
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     statement                      shift and go to state 59
     expr                           shift and go to state 6
@@ -2423,12 +2389,12 @@ state 56
     ID              reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     PRINT           reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     IF              reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
+    LOOP            reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     INT             reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     FLOAT           reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     STRING          reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     CHAR            reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     BOOL            reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
-    LOOP            reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     $end            reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     RPARENTHESIS    reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
     RCURLY          reduce using rule 9 (statement -> PRINT LPARENTHESIS statement RPARENTHESIS .)
@@ -2444,7 +2410,7 @@ state 57
 
 state 58
 
-    (34) expr -> LOOP LPARENTHESIS expr COMMA . expr RPARENTHESIS LCURLY statements RCURLY
+    (34) statement -> LOOP LPARENTHESIS expr COMMA . expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -2466,15 +2432,13 @@ state 58
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 34
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 61
 
@@ -2493,12 +2457,12 @@ state 60
     ID              reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     PRINT           reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     IF              reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
+    LOOP            reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     INT             reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     FLOAT           reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     STRING          reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     CHAR            reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     BOOL            reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
-    LOOP            reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     $end            reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     RPARENTHESIS    reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
     RCURLY          reduce using rule 32 (statement -> IF expr LCURLY statement RCURLY .)
@@ -2507,7 +2471,7 @@ state 60
 
 state 61
 
-    (34) expr -> LOOP LPARENTHESIS expr COMMA expr . RPARENTHESIS LCURLY statements RCURLY
+    (34) statement -> LOOP LPARENTHESIS expr COMMA expr . RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> expr . DIVIDE expr
     (12) expr -> expr . MULTIPLY expr
     (13) expr -> expr . ADD expr
@@ -2558,7 +2522,7 @@ state 63
 
 state 64
 
-    (34) expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS . LCURLY statements RCURLY
+    (34) statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS . LCURLY statement RCURLY
 
     LCURLY          shift and go to state 67
 
@@ -2570,12 +2534,12 @@ state 65
     ID              reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     PRINT           reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     IF              reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
+    LOOP            reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     INT             reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     FLOAT           reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     STRING          reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     CHAR            reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     BOOL            reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
-    LOOP            reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     $end            reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     RPARENTHESIS    reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
     RCURLY          reduce using rule 8 (statement -> PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS .)
@@ -2591,6 +2555,7 @@ state 66
     (10) statement -> . expr
     (32) statement -> . IF expr LCURLY statement RCURLY
     (33) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (34) statement -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -2612,26 +2577,23 @@ state 66
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 5
     PRINT           shift and go to state 7
     IF              shift and go to state 8
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    LOOP            shift and go to state 9
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 6
     statement                      shift and go to state 68
 
 state 67
 
-    (34) expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY . statements RCURLY
-    (3) statements -> . statements statement
-    (4) statements -> . statement
+    (34) statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY . statement RCURLY
     (6) statement -> . ID EQUALS expr
     (7) statement -> . ID EQUALS ID
     (8) statement -> . PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS
@@ -2639,6 +2601,7 @@ state 67
     (10) statement -> . expr
     (32) statement -> . IF expr LCURLY statement RCURLY
     (33) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (34) statement -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY
     (11) expr -> . expr DIVIDE expr
     (12) expr -> . expr MULTIPLY expr
     (13) expr -> . expr ADD expr
@@ -2660,21 +2623,19 @@ state 67
     (29) expr -> . STRING
     (30) expr -> . CHAR
     (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
 
     ID              shift and go to state 5
     PRINT           shift and go to state 7
     IF              shift and go to state 8
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
+    LOOP            shift and go to state 9
+    INT             shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOL            shift and go to state 14
 
     expr                           shift and go to state 6
-    statements                     shift and go to state 69
-    statement                      shift and go to state 4
+    statement                      shift and go to state 69
 
 state 68
 
@@ -2685,51 +2646,10 @@ state 68
 
 state 69
 
-    (34) expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements . RCURLY
-    (3) statements -> statements . statement
-    (6) statement -> . ID EQUALS expr
-    (7) statement -> . ID EQUALS ID
-    (8) statement -> . PRINT LPARENTHESIS VAR LPARENTHESIS statement RPARENTHESIS RPARENTHESIS
-    (9) statement -> . PRINT LPARENTHESIS statement RPARENTHESIS
-    (10) statement -> . expr
-    (32) statement -> . IF expr LCURLY statement RCURLY
-    (33) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
-    (11) expr -> . expr DIVIDE expr
-    (12) expr -> . expr MULTIPLY expr
-    (13) expr -> . expr ADD expr
-    (14) expr -> . expr SUBTRACT expr
-    (15) expr -> . expr MODULUS expr
-    (16) expr -> . expr EEQUALS expr
-    (17) expr -> . expr GREATER expr
-    (18) expr -> . expr SMALLER expr
-    (19) expr -> . expr AND expr
-    (20) expr -> . expr OR expr
-    (21) expr -> . expr NOTEQUALS expr
-    (22) expr -> . expr GEQUAL expr
-    (23) expr -> . expr SEQUAL expr
-    (24) expr -> . expr INCREMENT
-    (25) expr -> . expr DECREMENT
-    (26) expr -> . ID
-    (27) expr -> . INT
-    (28) expr -> . FLOAT
-    (29) expr -> . STRING
-    (30) expr -> . CHAR
-    (31) expr -> . BOOL
-    (34) expr -> . LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY
+    (34) statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement . RCURLY
 
     RCURLY          shift and go to state 71
-    ID              shift and go to state 5
-    PRINT           shift and go to state 7
-    IF              shift and go to state 8
-    INT             shift and go to state 9
-    FLOAT           shift and go to state 10
-    STRING          shift and go to state 11
-    CHAR            shift and go to state 12
-    BOOL            shift and go to state 13
-    LOOP            shift and go to state 14
 
-    expr                           shift and go to state 6
-    statement                      shift and go to state 15
 
 state 70
 
@@ -2738,12 +2658,12 @@ state 70
     ID              reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     PRINT           reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     IF              reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
+    LOOP            reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     INT             reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     FLOAT           reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     STRING          reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     CHAR            reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     BOOL            reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
-    LOOP            reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     $end            reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     RPARENTHESIS    reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
     RCURLY          reduce using rule 33 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
@@ -2751,37 +2671,20 @@ state 70
 
 state 71
 
-    (34) expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .
+    (34) statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .
 
-    DIVIDE          reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    MULTIPLY        reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    ADD             reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    SUBTRACT        reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    MODULUS         reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    EEQUALS         reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    GREATER         reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    SMALLER         reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    AND             reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    OR              reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    NOTEQUALS       reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    GEQUAL          reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    SEQUAL          reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    INCREMENT       reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    DECREMENT       reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    ID              reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    PRINT           reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    IF              reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    INT             reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    FLOAT           reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    STRING          reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    CHAR            reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    BOOL            reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    LOOP            reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    $end            reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    LCURLY          reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    RPARENTHESIS    reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    RCURLY          reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
-    COMMA           reduce using rule 34 (expr -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statements RCURLY .)
+    ID              reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    PRINT           reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    IF              reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    LOOP            reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    INT             reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    FLOAT           reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    STRING          reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    CHAR            reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    BOOL            reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    $end            reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    RPARENTHESIS    reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
+    RCURLY          reduce using rule 34 (statement -> LOOP LPARENTHESIS expr COMMA expr RPARENTHESIS LCURLY statement RCURLY .)
 
 WARNING: 
 WARNING: Conflicts:
