@@ -21,8 +21,6 @@ tokens = [
     'FLOAT',
     'STRING',
     'ID',
-    'LSQUARE',
-    'RSQUARE',
     'EQUALS',
     'INCREMENT',
     'DECREMENT',
@@ -31,21 +29,17 @@ tokens = [
     'GEQUAL',
     'SEQUAL',
     'CHAR',
-    'BOOL'
-
+    'BOOL',
+    'MODULUS',
+    'NOTEQUALS',
+    'EEQUALS',
 ]
 
 reserved = {
     'if' : "IF",
     'else' : "ELSE",
-    'elseif' : "ELSEIF",
-    'for' : 'FOR',
-    'while' : 'WHILE',
-    'do' : 'DO',
-    'jump': 'JUMP',
-    # 'TRUE' : 'TRUE',
-    # 'FALSE' : 'FALSE',
-    'break' : 'BREAK'
+    'loop' : 'LOOP',
+    'print': 'PRINT'
 }
 
 # Adding reserved words into the token list
@@ -79,7 +73,9 @@ t_LCURLY = r'\{'
 t_RCURLY = r'\}'
 t_LPARENTHESIS = r'\(' 
 t_RPARENTHESIS = r'\)'
-
+t_MODULUS = r'\%'
+t_INCREMENT = r'\+\+'
+t_DECREMENT = r'\-\-'
 
 def t_GEQUAL(t):
     r'\>[ ]*\='
@@ -92,9 +88,19 @@ def t_SEQUAL(t):
     t.value = '<='
     return t
 
+def t_NOTEQUALS(t):
+    r'\![ ]*\='
+    t.value = '!='
+    return t
 
-t_LSQUARE = r'\['
-t_RSQUARE = r'\]'
+def t_EEQUALS(t):
+    r'\=[ ]*\='
+    t.value = '=='
+    return t
+
+
+
+
 t_EQUALS = r'\='
 t_GREATER = r'\>'
 t_SMALLER = r'\<'
@@ -147,13 +153,21 @@ def t_error(t):
     t.lexer.skip(1)
     pass
 
+# def t_eof(t):
+#     # Get more input (Example)
+#     more = input('... ')
+#     if more:
+#         t.lexer.input(more)
+#         return t,lexer.token()
+#     return None
+
 
 lexer = lex.lex()
-data = input()
-lexer.input(data)
-while True:
-    tok = lexer.token()
-    if not tok: 
-        break      # No more input
-    print(tok)
+# data = input()
+# lexer.input(data)
+# while True:
+#     tok = lexer.token()
+#     if not tok: 
+#         break      # No more input
+#     print(tok)
 
