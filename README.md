@@ -15,7 +15,7 @@ The syntax of the language is like common programming languages. I wanted to cre
     - loop syntax is "loop ( condition , increment or any operation ) { statement to be executed }"
     - to print a varible we use "print( var( VariableA) )"
     - to print a string or a constant we use only print as "print( 5 )"
-    - if statements are also implmented as "if (condition) { Statement } esle { Statement }"
+    - if statements are also implmented as "if (condition) { Statement } else { Statement }"
 
 # Copyrights
 
