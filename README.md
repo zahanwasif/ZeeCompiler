@@ -23,4 +23,4 @@ Copyright 2020 Zahan Wasif Org. All rights reserved.
 
 # Contact information
 
-21100213@lums.edu.pk
+Name : Zahan Wasif - Email : 21100213@lums.edu.pk
