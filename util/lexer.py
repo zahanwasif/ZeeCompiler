@@ -31,7 +31,9 @@ tokens = [
     'MODULUS',
     'NOTEQUALS',
     'EEQUALS',
-    'COMMA'
+    'COMMA',
+    'SEMIC',
+    'DOT'
 ]
 
 reserved = {
@@ -41,7 +43,13 @@ reserved = {
     'print': 'PRINT',
     'var' : 'VAR',
     'inc' : 'INCREMENT',
-    'dec' : 'DECREMENT'
+    'dec' : 'DECREMENT',
+    'declare': 'DECLARE',
+    'do' : 'DO',
+    'while' : 'WHILE',
+    'list' : 'LIST',
+    'push': 'PUSH',
+    'pop' : 'POP'
 }
 
 # Adding reserved words into the token list
@@ -77,6 +85,7 @@ t_LPARENTHESIS = r'\('
 t_RPARENTHESIS = r'\)'
 t_MODULUS = r'\%'
 t_COMMA = r'\,'
+t_DOT = r'\.'
 
 def t_GEQUAL(t):
     r'\>[ ]*\='
@@ -105,6 +114,7 @@ def t_EEQUALS(t):
 t_EQUALS = r'\='
 t_GREATER = r'\>'
 t_SMALLER = r'\<'
+t_SEMIC = r'\;'
 
 def t_BOOL(t):
     r'TRUE|FALSE'
@@ -125,12 +135,12 @@ def t_INT(t):
 
 def t_CHAR(t):
     r'(\'.{0,1}\')'
-    t.value=t.value[1:-1]
+    t.value = t.value[1:-1]
     return t
 
 def t_STRING(t):
     r'(\".*\")|(\'.*\')'
-    t.value=t.value[1:-1]
+    t.value = t.value[1:-1]
     return t
 
 
