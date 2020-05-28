@@ -1,0 +1,14 @@
+print("List File") ;
+list A ;
+A.push(1) ;
+A.push(2) ;
+A.push(3) ;
+A.push(4) ;
+A.push(5) ;
+A.push(6) ;
+print(A) ;
+A.slice(2,4) ;
+A.index(4) ;
+A.pop(3) ; // This will pop out the element at 3rd index
+A.pop() ; // This pop() will pop the last element of the list
+print(A)

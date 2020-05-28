@@ -1,0 +1,13 @@
+print("Variables File") ;
+declare a ="start" ;
+declare b = 1 ;
+declare c = 2 ;
+declare d = FALSE ;
+declare e = b + c ;
+declare f = "end" ;
+print (a) ;
+print (b) ;
+print (c) ;
+print (d) ;
+print (e) ;
+print (f) 

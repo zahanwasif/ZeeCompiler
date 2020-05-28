@@ -1,0 +1,3477 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> statements
+Rule 2     start -> empty
+Rule 3     statements -> statements SEMIC statements
+Rule 4     statements -> statements
+Rule 5     statements -> statement SEMIC statement
+Rule 6     statements -> statement
+Rule 7     empty -> <empty>
+Rule 8     statement -> ID EQUALS expr
+Rule 9     statement -> ID EQUALS ID
+Rule 10    statement -> DECLARE ID EQUALS expr
+Rule 11    statement -> DECLARE ID EQUALS ID
+Rule 12    statement -> DECLARE ID
+Rule 13    statement -> PRINT LPARENTHESIS ID RPARENTHESIS
+Rule 14    statement -> PRINT LPARENTHESIS expr RPARENTHESIS
+Rule 15    statement -> PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS
+Rule 16    statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+Rule 17    statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+Rule 18    statement -> expr
+Rule 19    expr -> expr DIVIDE expr
+Rule 20    expr -> expr MULTIPLY expr
+Rule 21    expr -> expr ADD expr
+Rule 22    expr -> expr SUBTRACT expr
+Rule 23    expr -> expr MODULUS expr
+Rule 24    expr -> expr EEQUALS expr
+Rule 25    expr -> expr GREATER expr
+Rule 26    expr -> expr SMALLER expr
+Rule 27    expr -> expr AND expr
+Rule 28    expr -> expr OR expr
+Rule 29    expr -> expr NOTEQUALS expr
+Rule 30    expr -> expr GEQUAL expr
+Rule 31    expr -> expr SEQUAL expr
+Rule 32    expr -> expr INCREMENT
+Rule 33    expr -> expr DECREMENT
+Rule 34    expr -> ID
+Rule 35    expr -> INT
+Rule 36    expr -> FLOAT
+Rule 37    expr -> STRING
+Rule 38    expr -> CHAR
+Rule 39    expr -> BOOL
+Rule 40    statement -> IF expr LCURLY statement RCURLY
+Rule 41    statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+Rule 42    statement -> DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+Rule 43    statement -> LIST ID
+Rule 44    statement -> ID DOT PUSH LPARENTHESIS expr RPARENTHESIS
+Rule 45    statement -> ID DOT PUSH LPARENTHESIS ID RPARENTHESIS
+Rule 46    statement -> ID DOT POP LPARENTHESIS RPARENTHESIS
+Rule 47    statement -> ID DOT POP LPARENTHESIS expr RPARENTHESIS
+Rule 48    statement -> ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+Rule 49    statement -> ID DOT INDEX LPARENTHESIS expr RPARENTHESIS
+
+Terminals, with rules where they appear
+
+ADD                  : 21
+AND                  : 27
+BOOL                 : 39
+CHAR                 : 38
+COMMA                : 15 16 16 17 17 17 48
+DECLARE              : 10 11 12
+DECREMENT            : 33
+DIVIDE               : 19
+DO                   : 42
+DOT                  : 44 45 46 47 48 49
+EEQUALS              : 24
+ELSE                 : 41
+EQUALS               : 8 9 10 11
+FLOAT                : 36
+GEQUAL               : 30
+GREATER              : 25
+ID                   : 8 9 9 10 11 11 12 13 34 43 44 45 45 46 47 48 49
+IF                   : 40 41
+INCREMENT            : 32
+INDEX                : 49
+INT                  : 35
+LCURLY               : 40 41 41 42
+LIST                 : 43
+LPARENTHESIS         : 13 14 15 16 17 42 44 45 46 47 48 49
+MODULUS              : 23
+MULTIPLY             : 20
+NOTEQUALS            : 29
+OR                   : 28
+POP                  : 46 47
+PRINT                : 13 14 15 16 17
+PUSH                 : 44 45
+RCURLY               : 40 41 41 42
+RPARENTHESIS         : 13 14 15 16 17 42 44 45 46 47 48 49
+SEMIC                : 3 5
+SEQUAL               : 31
+SLICE                : 48
+SMALLER              : 26
+STRING               : 37
+SUBTRACT             : 22
+WHILE                : 42
+error                : 
+
+Nonterminals, with rules where they appear
+
+empty                : 2
+expr                 : 8 10 14 15 15 16 16 16 17 17 17 17 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 33 40 41 42 44 47 48 48 49
+start                : 0
+statement            : 5 5 6 40 41 41
+statements           : 1 3 3 4 42
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . statements
+    (2) start -> . empty
+    (3) statements -> . statements SEMIC statements
+    (4) statements -> . statements
+    (5) statements -> . statement SEMIC statement
+    (6) statements -> . statement
+    (7) empty -> .
+    (8) statement -> . ID EQUALS expr
+    (9) statement -> . ID EQUALS ID
+    (10) statement -> . DECLARE ID EQUALS expr
+    (11) statement -> . DECLARE ID EQUALS ID
+    (12) statement -> . DECLARE ID
+    (13) statement -> . PRINT LPARENTHESIS ID RPARENTHESIS
+    (14) statement -> . PRINT LPARENTHESIS expr RPARENTHESIS
+    (15) statement -> . PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (16) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    (18) statement -> . expr
+    (40) statement -> . IF expr LCURLY statement RCURLY
+    (41) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (42) statement -> . DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+    (43) statement -> . LIST ID
+    (44) statement -> . ID DOT PUSH LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> . ID DOT PUSH LPARENTHESIS ID RPARENTHESIS
+    (46) statement -> . ID DOT POP LPARENTHESIS RPARENTHESIS
+    (47) statement -> . ID DOT POP LPARENTHESIS expr RPARENTHESIS
+    (48) statement -> . ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (49) statement -> . ID DOT INDEX LPARENTHESIS expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    $end            reduce using rule 7 (empty -> .)
+    ID              shift and go to state 5
+    DECLARE         shift and go to state 7
+    PRINT           shift and go to state 8
+    IF              shift and go to state 9
+    DO              shift and go to state 10
+    LIST            shift and go to state 11
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    start                          shift and go to state 1
+    statements                     shift and go to state 2
+    empty                          shift and go to state 3
+    statement                      shift and go to state 4
+    expr                           shift and go to state 6
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> statements .
+    (3) statements -> statements . SEMIC statements
+    (4) statements -> statements .
+
+  ! shift/reduce conflict for SEMIC resolved as shift
+  ! reduce/reduce conflict for $end resolved using rule 1 (start -> statements .)
+    $end            reduce using rule 1 (start -> statements .)
+    SEMIC           shift and go to state 17
+
+  ! SEMIC           [ reduce using rule 4 (statements -> statements .) ]
+  ! $end            [ reduce using rule 4 (statements -> statements .) ]
+
+
+state 3
+
+    (2) start -> empty .
+
+    $end            reduce using rule 2 (start -> empty .)
+
+
+state 4
+
+    (5) statements -> statement . SEMIC statement
+    (6) statements -> statement .
+
+  ! shift/reduce conflict for SEMIC resolved as shift
+    SEMIC           shift and go to state 18
+    $end            reduce using rule 6 (statements -> statement .)
+    RCURLY          reduce using rule 6 (statements -> statement .)
+
+  ! SEMIC           [ reduce using rule 6 (statements -> statement .) ]
+
+
+state 5
+
+    (8) statement -> ID . EQUALS expr
+    (9) statement -> ID . EQUALS ID
+    (44) statement -> ID . DOT PUSH LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> ID . DOT PUSH LPARENTHESIS ID RPARENTHESIS
+    (46) statement -> ID . DOT POP LPARENTHESIS RPARENTHESIS
+    (47) statement -> ID . DOT POP LPARENTHESIS expr RPARENTHESIS
+    (48) statement -> ID . DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (49) statement -> ID . DOT INDEX LPARENTHESIS expr RPARENTHESIS
+    (34) expr -> ID .
+
+    EQUALS          shift and go to state 19
+    DOT             shift and go to state 20
+    DIVIDE          reduce using rule 34 (expr -> ID .)
+    MULTIPLY        reduce using rule 34 (expr -> ID .)
+    ADD             reduce using rule 34 (expr -> ID .)
+    SUBTRACT        reduce using rule 34 (expr -> ID .)
+    MODULUS         reduce using rule 34 (expr -> ID .)
+    EEQUALS         reduce using rule 34 (expr -> ID .)
+    GREATER         reduce using rule 34 (expr -> ID .)
+    SMALLER         reduce using rule 34 (expr -> ID .)
+    AND             reduce using rule 34 (expr -> ID .)
+    OR              reduce using rule 34 (expr -> ID .)
+    NOTEQUALS       reduce using rule 34 (expr -> ID .)
+    GEQUAL          reduce using rule 34 (expr -> ID .)
+    SEQUAL          reduce using rule 34 (expr -> ID .)
+    INCREMENT       reduce using rule 34 (expr -> ID .)
+    DECREMENT       reduce using rule 34 (expr -> ID .)
+    SEMIC           reduce using rule 34 (expr -> ID .)
+    $end            reduce using rule 34 (expr -> ID .)
+    RCURLY          reduce using rule 34 (expr -> ID .)
+
+
+state 6
+
+    (18) statement -> expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    SEMIC           reduce using rule 18 (statement -> expr .)
+    $end            reduce using rule 18 (statement -> expr .)
+    RCURLY          reduce using rule 18 (statement -> expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 7
+
+    (10) statement -> DECLARE . ID EQUALS expr
+    (11) statement -> DECLARE . ID EQUALS ID
+    (12) statement -> DECLARE . ID
+
+    ID              shift and go to state 36
+
+
+state 8
+
+    (13) statement -> PRINT . LPARENTHESIS ID RPARENTHESIS
+    (14) statement -> PRINT . LPARENTHESIS expr RPARENTHESIS
+    (15) statement -> PRINT . LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (16) statement -> PRINT . LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> PRINT . LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+
+    LPARENTHESIS    shift and go to state 37
+
+
+state 9
+
+    (40) statement -> IF . expr LCURLY statement RCURLY
+    (41) statement -> IF . expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 38
+
+state 10
+
+    (42) statement -> DO . LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+
+    LCURLY          shift and go to state 40
+
+
+state 11
+
+    (43) statement -> LIST . ID
+
+    ID              shift and go to state 41
+
+
+state 12
+
+    (35) expr -> INT .
+
+    DIVIDE          reduce using rule 35 (expr -> INT .)
+    MULTIPLY        reduce using rule 35 (expr -> INT .)
+    ADD             reduce using rule 35 (expr -> INT .)
+    SUBTRACT        reduce using rule 35 (expr -> INT .)
+    MODULUS         reduce using rule 35 (expr -> INT .)
+    EEQUALS         reduce using rule 35 (expr -> INT .)
+    GREATER         reduce using rule 35 (expr -> INT .)
+    SMALLER         reduce using rule 35 (expr -> INT .)
+    AND             reduce using rule 35 (expr -> INT .)
+    OR              reduce using rule 35 (expr -> INT .)
+    NOTEQUALS       reduce using rule 35 (expr -> INT .)
+    GEQUAL          reduce using rule 35 (expr -> INT .)
+    SEQUAL          reduce using rule 35 (expr -> INT .)
+    INCREMENT       reduce using rule 35 (expr -> INT .)
+    DECREMENT       reduce using rule 35 (expr -> INT .)
+    SEMIC           reduce using rule 35 (expr -> INT .)
+    $end            reduce using rule 35 (expr -> INT .)
+    LCURLY          reduce using rule 35 (expr -> INT .)
+    RCURLY          reduce using rule 35 (expr -> INT .)
+    RPARENTHESIS    reduce using rule 35 (expr -> INT .)
+    COMMA           reduce using rule 35 (expr -> INT .)
+
+
+state 13
+
+    (36) expr -> FLOAT .
+
+    DIVIDE          reduce using rule 36 (expr -> FLOAT .)
+    MULTIPLY        reduce using rule 36 (expr -> FLOAT .)
+    ADD             reduce using rule 36 (expr -> FLOAT .)
+    SUBTRACT        reduce using rule 36 (expr -> FLOAT .)
+    MODULUS         reduce using rule 36 (expr -> FLOAT .)
+    EEQUALS         reduce using rule 36 (expr -> FLOAT .)
+    GREATER         reduce using rule 36 (expr -> FLOAT .)
+    SMALLER         reduce using rule 36 (expr -> FLOAT .)
+    AND             reduce using rule 36 (expr -> FLOAT .)
+    OR              reduce using rule 36 (expr -> FLOAT .)
+    NOTEQUALS       reduce using rule 36 (expr -> FLOAT .)
+    GEQUAL          reduce using rule 36 (expr -> FLOAT .)
+    SEQUAL          reduce using rule 36 (expr -> FLOAT .)
+    INCREMENT       reduce using rule 36 (expr -> FLOAT .)
+    DECREMENT       reduce using rule 36 (expr -> FLOAT .)
+    SEMIC           reduce using rule 36 (expr -> FLOAT .)
+    $end            reduce using rule 36 (expr -> FLOAT .)
+    LCURLY          reduce using rule 36 (expr -> FLOAT .)
+    RCURLY          reduce using rule 36 (expr -> FLOAT .)
+    RPARENTHESIS    reduce using rule 36 (expr -> FLOAT .)
+    COMMA           reduce using rule 36 (expr -> FLOAT .)
+
+
+state 14
+
+    (37) expr -> STRING .
+
+    DIVIDE          reduce using rule 37 (expr -> STRING .)
+    MULTIPLY        reduce using rule 37 (expr -> STRING .)
+    ADD             reduce using rule 37 (expr -> STRING .)
+    SUBTRACT        reduce using rule 37 (expr -> STRING .)
+    MODULUS         reduce using rule 37 (expr -> STRING .)
+    EEQUALS         reduce using rule 37 (expr -> STRING .)
+    GREATER         reduce using rule 37 (expr -> STRING .)
+    SMALLER         reduce using rule 37 (expr -> STRING .)
+    AND             reduce using rule 37 (expr -> STRING .)
+    OR              reduce using rule 37 (expr -> STRING .)
+    NOTEQUALS       reduce using rule 37 (expr -> STRING .)
+    GEQUAL          reduce using rule 37 (expr -> STRING .)
+    SEQUAL          reduce using rule 37 (expr -> STRING .)
+    INCREMENT       reduce using rule 37 (expr -> STRING .)
+    DECREMENT       reduce using rule 37 (expr -> STRING .)
+    SEMIC           reduce using rule 37 (expr -> STRING .)
+    $end            reduce using rule 37 (expr -> STRING .)
+    LCURLY          reduce using rule 37 (expr -> STRING .)
+    RCURLY          reduce using rule 37 (expr -> STRING .)
+    RPARENTHESIS    reduce using rule 37 (expr -> STRING .)
+    COMMA           reduce using rule 37 (expr -> STRING .)
+
+
+state 15
+
+    (38) expr -> CHAR .
+
+    DIVIDE          reduce using rule 38 (expr -> CHAR .)
+    MULTIPLY        reduce using rule 38 (expr -> CHAR .)
+    ADD             reduce using rule 38 (expr -> CHAR .)
+    SUBTRACT        reduce using rule 38 (expr -> CHAR .)
+    MODULUS         reduce using rule 38 (expr -> CHAR .)
+    EEQUALS         reduce using rule 38 (expr -> CHAR .)
+    GREATER         reduce using rule 38 (expr -> CHAR .)
+    SMALLER         reduce using rule 38 (expr -> CHAR .)
+    AND             reduce using rule 38 (expr -> CHAR .)
+    OR              reduce using rule 38 (expr -> CHAR .)
+    NOTEQUALS       reduce using rule 38 (expr -> CHAR .)
+    GEQUAL          reduce using rule 38 (expr -> CHAR .)
+    SEQUAL          reduce using rule 38 (expr -> CHAR .)
+    INCREMENT       reduce using rule 38 (expr -> CHAR .)
+    DECREMENT       reduce using rule 38 (expr -> CHAR .)
+    SEMIC           reduce using rule 38 (expr -> CHAR .)
+    $end            reduce using rule 38 (expr -> CHAR .)
+    LCURLY          reduce using rule 38 (expr -> CHAR .)
+    RCURLY          reduce using rule 38 (expr -> CHAR .)
+    RPARENTHESIS    reduce using rule 38 (expr -> CHAR .)
+    COMMA           reduce using rule 38 (expr -> CHAR .)
+
+
+state 16
+
+    (39) expr -> BOOL .
+
+    DIVIDE          reduce using rule 39 (expr -> BOOL .)
+    MULTIPLY        reduce using rule 39 (expr -> BOOL .)
+    ADD             reduce using rule 39 (expr -> BOOL .)
+    SUBTRACT        reduce using rule 39 (expr -> BOOL .)
+    MODULUS         reduce using rule 39 (expr -> BOOL .)
+    EEQUALS         reduce using rule 39 (expr -> BOOL .)
+    GREATER         reduce using rule 39 (expr -> BOOL .)
+    SMALLER         reduce using rule 39 (expr -> BOOL .)
+    AND             reduce using rule 39 (expr -> BOOL .)
+    OR              reduce using rule 39 (expr -> BOOL .)
+    NOTEQUALS       reduce using rule 39 (expr -> BOOL .)
+    GEQUAL          reduce using rule 39 (expr -> BOOL .)
+    SEQUAL          reduce using rule 39 (expr -> BOOL .)
+    INCREMENT       reduce using rule 39 (expr -> BOOL .)
+    DECREMENT       reduce using rule 39 (expr -> BOOL .)
+    SEMIC           reduce using rule 39 (expr -> BOOL .)
+    $end            reduce using rule 39 (expr -> BOOL .)
+    LCURLY          reduce using rule 39 (expr -> BOOL .)
+    RCURLY          reduce using rule 39 (expr -> BOOL .)
+    RPARENTHESIS    reduce using rule 39 (expr -> BOOL .)
+    COMMA           reduce using rule 39 (expr -> BOOL .)
+
+
+state 17
+
+    (3) statements -> statements SEMIC . statements
+    (3) statements -> . statements SEMIC statements
+    (4) statements -> . statements
+    (5) statements -> . statement SEMIC statement
+    (6) statements -> . statement
+    (8) statement -> . ID EQUALS expr
+    (9) statement -> . ID EQUALS ID
+    (10) statement -> . DECLARE ID EQUALS expr
+    (11) statement -> . DECLARE ID EQUALS ID
+    (12) statement -> . DECLARE ID
+    (13) statement -> . PRINT LPARENTHESIS ID RPARENTHESIS
+    (14) statement -> . PRINT LPARENTHESIS expr RPARENTHESIS
+    (15) statement -> . PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (16) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    (18) statement -> . expr
+    (40) statement -> . IF expr LCURLY statement RCURLY
+    (41) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (42) statement -> . DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+    (43) statement -> . LIST ID
+    (44) statement -> . ID DOT PUSH LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> . ID DOT PUSH LPARENTHESIS ID RPARENTHESIS
+    (46) statement -> . ID DOT POP LPARENTHESIS RPARENTHESIS
+    (47) statement -> . ID DOT POP LPARENTHESIS expr RPARENTHESIS
+    (48) statement -> . ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (49) statement -> . ID DOT INDEX LPARENTHESIS expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 5
+    DECLARE         shift and go to state 7
+    PRINT           shift and go to state 8
+    IF              shift and go to state 9
+    DO              shift and go to state 10
+    LIST            shift and go to state 11
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    statements                     shift and go to state 42
+    statement                      shift and go to state 4
+    expr                           shift and go to state 6
+
+state 18
+
+    (5) statements -> statement SEMIC . statement
+    (8) statement -> . ID EQUALS expr
+    (9) statement -> . ID EQUALS ID
+    (10) statement -> . DECLARE ID EQUALS expr
+    (11) statement -> . DECLARE ID EQUALS ID
+    (12) statement -> . DECLARE ID
+    (13) statement -> . PRINT LPARENTHESIS ID RPARENTHESIS
+    (14) statement -> . PRINT LPARENTHESIS expr RPARENTHESIS
+    (15) statement -> . PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (16) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    (18) statement -> . expr
+    (40) statement -> . IF expr LCURLY statement RCURLY
+    (41) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (42) statement -> . DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+    (43) statement -> . LIST ID
+    (44) statement -> . ID DOT PUSH LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> . ID DOT PUSH LPARENTHESIS ID RPARENTHESIS
+    (46) statement -> . ID DOT POP LPARENTHESIS RPARENTHESIS
+    (47) statement -> . ID DOT POP LPARENTHESIS expr RPARENTHESIS
+    (48) statement -> . ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (49) statement -> . ID DOT INDEX LPARENTHESIS expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 5
+    DECLARE         shift and go to state 7
+    PRINT           shift and go to state 8
+    IF              shift and go to state 9
+    DO              shift and go to state 10
+    LIST            shift and go to state 11
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    statement                      shift and go to state 43
+    expr                           shift and go to state 6
+
+state 19
+
+    (8) statement -> ID EQUALS . expr
+    (9) statement -> ID EQUALS . ID
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 44
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 45
+
+state 20
+
+    (44) statement -> ID DOT . PUSH LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> ID DOT . PUSH LPARENTHESIS ID RPARENTHESIS
+    (46) statement -> ID DOT . POP LPARENTHESIS RPARENTHESIS
+    (47) statement -> ID DOT . POP LPARENTHESIS expr RPARENTHESIS
+    (48) statement -> ID DOT . SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (49) statement -> ID DOT . INDEX LPARENTHESIS expr RPARENTHESIS
+
+    PUSH            shift and go to state 46
+    POP             shift and go to state 47
+    SLICE           shift and go to state 48
+    INDEX           shift and go to state 49
+
+
+state 21
+
+    (19) expr -> expr DIVIDE . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 50
+
+state 22
+
+    (20) expr -> expr MULTIPLY . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 51
+
+state 23
+
+    (21) expr -> expr ADD . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 52
+
+state 24
+
+    (22) expr -> expr SUBTRACT . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 53
+
+state 25
+
+    (23) expr -> expr MODULUS . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 54
+
+state 26
+
+    (24) expr -> expr EEQUALS . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 55
+
+state 27
+
+    (25) expr -> expr GREATER . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 56
+
+state 28
+
+    (26) expr -> expr SMALLER . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 57
+
+state 29
+
+    (27) expr -> expr AND . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 58
+
+state 30
+
+    (28) expr -> expr OR . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 59
+
+state 31
+
+    (29) expr -> expr NOTEQUALS . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 60
+
+state 32
+
+    (30) expr -> expr GEQUAL . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 61
+
+state 33
+
+    (31) expr -> expr SEQUAL . expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 62
+
+state 34
+
+    (32) expr -> expr INCREMENT .
+
+    DIVIDE          reduce using rule 32 (expr -> expr INCREMENT .)
+    MULTIPLY        reduce using rule 32 (expr -> expr INCREMENT .)
+    ADD             reduce using rule 32 (expr -> expr INCREMENT .)
+    SUBTRACT        reduce using rule 32 (expr -> expr INCREMENT .)
+    MODULUS         reduce using rule 32 (expr -> expr INCREMENT .)
+    EEQUALS         reduce using rule 32 (expr -> expr INCREMENT .)
+    GREATER         reduce using rule 32 (expr -> expr INCREMENT .)
+    SMALLER         reduce using rule 32 (expr -> expr INCREMENT .)
+    AND             reduce using rule 32 (expr -> expr INCREMENT .)
+    OR              reduce using rule 32 (expr -> expr INCREMENT .)
+    NOTEQUALS       reduce using rule 32 (expr -> expr INCREMENT .)
+    GEQUAL          reduce using rule 32 (expr -> expr INCREMENT .)
+    SEQUAL          reduce using rule 32 (expr -> expr INCREMENT .)
+    INCREMENT       reduce using rule 32 (expr -> expr INCREMENT .)
+    DECREMENT       reduce using rule 32 (expr -> expr INCREMENT .)
+    SEMIC           reduce using rule 32 (expr -> expr INCREMENT .)
+    $end            reduce using rule 32 (expr -> expr INCREMENT .)
+    LCURLY          reduce using rule 32 (expr -> expr INCREMENT .)
+    RCURLY          reduce using rule 32 (expr -> expr INCREMENT .)
+    RPARENTHESIS    reduce using rule 32 (expr -> expr INCREMENT .)
+    COMMA           reduce using rule 32 (expr -> expr INCREMENT .)
+
+
+state 35
+
+    (33) expr -> expr DECREMENT .
+
+    DIVIDE          reduce using rule 33 (expr -> expr DECREMENT .)
+    MULTIPLY        reduce using rule 33 (expr -> expr DECREMENT .)
+    ADD             reduce using rule 33 (expr -> expr DECREMENT .)
+    SUBTRACT        reduce using rule 33 (expr -> expr DECREMENT .)
+    MODULUS         reduce using rule 33 (expr -> expr DECREMENT .)
+    EEQUALS         reduce using rule 33 (expr -> expr DECREMENT .)
+    GREATER         reduce using rule 33 (expr -> expr DECREMENT .)
+    SMALLER         reduce using rule 33 (expr -> expr DECREMENT .)
+    AND             reduce using rule 33 (expr -> expr DECREMENT .)
+    OR              reduce using rule 33 (expr -> expr DECREMENT .)
+    NOTEQUALS       reduce using rule 33 (expr -> expr DECREMENT .)
+    GEQUAL          reduce using rule 33 (expr -> expr DECREMENT .)
+    SEQUAL          reduce using rule 33 (expr -> expr DECREMENT .)
+    INCREMENT       reduce using rule 33 (expr -> expr DECREMENT .)
+    DECREMENT       reduce using rule 33 (expr -> expr DECREMENT .)
+    SEMIC           reduce using rule 33 (expr -> expr DECREMENT .)
+    $end            reduce using rule 33 (expr -> expr DECREMENT .)
+    LCURLY          reduce using rule 33 (expr -> expr DECREMENT .)
+    RCURLY          reduce using rule 33 (expr -> expr DECREMENT .)
+    RPARENTHESIS    reduce using rule 33 (expr -> expr DECREMENT .)
+    COMMA           reduce using rule 33 (expr -> expr DECREMENT .)
+
+
+state 36
+
+    (10) statement -> DECLARE ID . EQUALS expr
+    (11) statement -> DECLARE ID . EQUALS ID
+    (12) statement -> DECLARE ID .
+
+    EQUALS          shift and go to state 63
+    SEMIC           reduce using rule 12 (statement -> DECLARE ID .)
+    $end            reduce using rule 12 (statement -> DECLARE ID .)
+    RCURLY          reduce using rule 12 (statement -> DECLARE ID .)
+
+
+state 37
+
+    (13) statement -> PRINT LPARENTHESIS . ID RPARENTHESIS
+    (14) statement -> PRINT LPARENTHESIS . expr RPARENTHESIS
+    (15) statement -> PRINT LPARENTHESIS . expr COMMA expr RPARENTHESIS
+    (16) statement -> PRINT LPARENTHESIS . expr COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> PRINT LPARENTHESIS . expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 64
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 65
+
+state 38
+
+    (40) statement -> IF expr . LCURLY statement RCURLY
+    (41) statement -> IF expr . LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    LCURLY          shift and go to state 66
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 39
+
+    (34) expr -> ID .
+
+    LCURLY          reduce using rule 34 (expr -> ID .)
+    DIVIDE          reduce using rule 34 (expr -> ID .)
+    MULTIPLY        reduce using rule 34 (expr -> ID .)
+    ADD             reduce using rule 34 (expr -> ID .)
+    SUBTRACT        reduce using rule 34 (expr -> ID .)
+    MODULUS         reduce using rule 34 (expr -> ID .)
+    EEQUALS         reduce using rule 34 (expr -> ID .)
+    GREATER         reduce using rule 34 (expr -> ID .)
+    SMALLER         reduce using rule 34 (expr -> ID .)
+    AND             reduce using rule 34 (expr -> ID .)
+    OR              reduce using rule 34 (expr -> ID .)
+    NOTEQUALS       reduce using rule 34 (expr -> ID .)
+    GEQUAL          reduce using rule 34 (expr -> ID .)
+    SEQUAL          reduce using rule 34 (expr -> ID .)
+    INCREMENT       reduce using rule 34 (expr -> ID .)
+    DECREMENT       reduce using rule 34 (expr -> ID .)
+    SEMIC           reduce using rule 34 (expr -> ID .)
+    $end            reduce using rule 34 (expr -> ID .)
+    RCURLY          reduce using rule 34 (expr -> ID .)
+    RPARENTHESIS    reduce using rule 34 (expr -> ID .)
+    COMMA           reduce using rule 34 (expr -> ID .)
+
+
+state 40
+
+    (42) statement -> DO LCURLY . statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+    (3) statements -> . statements SEMIC statements
+    (4) statements -> . statements
+    (5) statements -> . statement SEMIC statement
+    (6) statements -> . statement
+    (8) statement -> . ID EQUALS expr
+    (9) statement -> . ID EQUALS ID
+    (10) statement -> . DECLARE ID EQUALS expr
+    (11) statement -> . DECLARE ID EQUALS ID
+    (12) statement -> . DECLARE ID
+    (13) statement -> . PRINT LPARENTHESIS ID RPARENTHESIS
+    (14) statement -> . PRINT LPARENTHESIS expr RPARENTHESIS
+    (15) statement -> . PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (16) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    (18) statement -> . expr
+    (40) statement -> . IF expr LCURLY statement RCURLY
+    (41) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (42) statement -> . DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+    (43) statement -> . LIST ID
+    (44) statement -> . ID DOT PUSH LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> . ID DOT PUSH LPARENTHESIS ID RPARENTHESIS
+    (46) statement -> . ID DOT POP LPARENTHESIS RPARENTHESIS
+    (47) statement -> . ID DOT POP LPARENTHESIS expr RPARENTHESIS
+    (48) statement -> . ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (49) statement -> . ID DOT INDEX LPARENTHESIS expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 5
+    DECLARE         shift and go to state 7
+    PRINT           shift and go to state 8
+    IF              shift and go to state 9
+    DO              shift and go to state 10
+    LIST            shift and go to state 11
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    statements                     shift and go to state 67
+    expr                           shift and go to state 6
+    statement                      shift and go to state 4
+
+state 41
+
+    (43) statement -> LIST ID .
+
+    SEMIC           reduce using rule 43 (statement -> LIST ID .)
+    $end            reduce using rule 43 (statement -> LIST ID .)
+    RCURLY          reduce using rule 43 (statement -> LIST ID .)
+
+
+state 42
+
+    (3) statements -> statements SEMIC statements .
+    (3) statements -> statements . SEMIC statements
+    (4) statements -> statements .
+
+  ! shift/reduce conflict for SEMIC resolved as shift
+  ! shift/reduce conflict for SEMIC resolved as shift
+  ! reduce/reduce conflict for $end resolved using rule 3 (statements -> statements SEMIC statements .)
+  ! reduce/reduce conflict for RCURLY resolved using rule 3 (statements -> statements SEMIC statements .)
+    $end            reduce using rule 3 (statements -> statements SEMIC statements .)
+    RCURLY          reduce using rule 3 (statements -> statements SEMIC statements .)
+    SEMIC           shift and go to state 17
+
+  ! SEMIC           [ reduce using rule 3 (statements -> statements SEMIC statements .) ]
+  ! SEMIC           [ reduce using rule 4 (statements -> statements .) ]
+  ! $end            [ reduce using rule 4 (statements -> statements .) ]
+  ! RCURLY          [ reduce using rule 4 (statements -> statements .) ]
+
+
+state 43
+
+    (5) statements -> statement SEMIC statement .
+
+    SEMIC           reduce using rule 5 (statements -> statement SEMIC statement .)
+    $end            reduce using rule 5 (statements -> statement SEMIC statement .)
+    RCURLY          reduce using rule 5 (statements -> statement SEMIC statement .)
+
+
+state 44
+
+    (9) statement -> ID EQUALS ID .
+    (34) expr -> ID .
+
+  ! reduce/reduce conflict for SEMIC resolved using rule 9 (statement -> ID EQUALS ID .)
+  ! reduce/reduce conflict for $end resolved using rule 9 (statement -> ID EQUALS ID .)
+  ! reduce/reduce conflict for RCURLY resolved using rule 9 (statement -> ID EQUALS ID .)
+    SEMIC           reduce using rule 9 (statement -> ID EQUALS ID .)
+    $end            reduce using rule 9 (statement -> ID EQUALS ID .)
+    RCURLY          reduce using rule 9 (statement -> ID EQUALS ID .)
+    DIVIDE          reduce using rule 34 (expr -> ID .)
+    MULTIPLY        reduce using rule 34 (expr -> ID .)
+    ADD             reduce using rule 34 (expr -> ID .)
+    SUBTRACT        reduce using rule 34 (expr -> ID .)
+    MODULUS         reduce using rule 34 (expr -> ID .)
+    EEQUALS         reduce using rule 34 (expr -> ID .)
+    GREATER         reduce using rule 34 (expr -> ID .)
+    SMALLER         reduce using rule 34 (expr -> ID .)
+    AND             reduce using rule 34 (expr -> ID .)
+    OR              reduce using rule 34 (expr -> ID .)
+    NOTEQUALS       reduce using rule 34 (expr -> ID .)
+    GEQUAL          reduce using rule 34 (expr -> ID .)
+    SEQUAL          reduce using rule 34 (expr -> ID .)
+    INCREMENT       reduce using rule 34 (expr -> ID .)
+    DECREMENT       reduce using rule 34 (expr -> ID .)
+
+  ! SEMIC           [ reduce using rule 34 (expr -> ID .) ]
+  ! $end            [ reduce using rule 34 (expr -> ID .) ]
+  ! RCURLY          [ reduce using rule 34 (expr -> ID .) ]
+
+
+state 45
+
+    (8) statement -> ID EQUALS expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    SEMIC           reduce using rule 8 (statement -> ID EQUALS expr .)
+    $end            reduce using rule 8 (statement -> ID EQUALS expr .)
+    RCURLY          reduce using rule 8 (statement -> ID EQUALS expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 46
+
+    (44) statement -> ID DOT PUSH . LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> ID DOT PUSH . LPARENTHESIS ID RPARENTHESIS
+
+    LPARENTHESIS    shift and go to state 68
+
+
+state 47
+
+    (46) statement -> ID DOT POP . LPARENTHESIS RPARENTHESIS
+    (47) statement -> ID DOT POP . LPARENTHESIS expr RPARENTHESIS
+
+    LPARENTHESIS    shift and go to state 69
+
+
+state 48
+
+    (48) statement -> ID DOT SLICE . LPARENTHESIS expr COMMA expr RPARENTHESIS
+
+    LPARENTHESIS    shift and go to state 70
+
+
+state 49
+
+    (49) statement -> ID DOT INDEX . LPARENTHESIS expr RPARENTHESIS
+
+    LPARENTHESIS    shift and go to state 71
+
+
+state 50
+
+    (19) expr -> expr DIVIDE expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    DIVIDE          reduce using rule 19 (expr -> expr DIVIDE expr .)
+    MULTIPLY        reduce using rule 19 (expr -> expr DIVIDE expr .)
+    ADD             reduce using rule 19 (expr -> expr DIVIDE expr .)
+    SUBTRACT        reduce using rule 19 (expr -> expr DIVIDE expr .)
+    MODULUS         reduce using rule 19 (expr -> expr DIVIDE expr .)
+    EEQUALS         reduce using rule 19 (expr -> expr DIVIDE expr .)
+    GREATER         reduce using rule 19 (expr -> expr DIVIDE expr .)
+    SMALLER         reduce using rule 19 (expr -> expr DIVIDE expr .)
+    AND             reduce using rule 19 (expr -> expr DIVIDE expr .)
+    OR              reduce using rule 19 (expr -> expr DIVIDE expr .)
+    NOTEQUALS       reduce using rule 19 (expr -> expr DIVIDE expr .)
+    GEQUAL          reduce using rule 19 (expr -> expr DIVIDE expr .)
+    SEQUAL          reduce using rule 19 (expr -> expr DIVIDE expr .)
+    INCREMENT       reduce using rule 19 (expr -> expr DIVIDE expr .)
+    DECREMENT       reduce using rule 19 (expr -> expr DIVIDE expr .)
+    SEMIC           reduce using rule 19 (expr -> expr DIVIDE expr .)
+    $end            reduce using rule 19 (expr -> expr DIVIDE expr .)
+    LCURLY          reduce using rule 19 (expr -> expr DIVIDE expr .)
+    RCURLY          reduce using rule 19 (expr -> expr DIVIDE expr .)
+    RPARENTHESIS    reduce using rule 19 (expr -> expr DIVIDE expr .)
+    COMMA           reduce using rule 19 (expr -> expr DIVIDE expr .)
+
+  ! DIVIDE          [ shift and go to state 21 ]
+  ! MULTIPLY        [ shift and go to state 22 ]
+  ! ADD             [ shift and go to state 23 ]
+  ! SUBTRACT        [ shift and go to state 24 ]
+  ! MODULUS         [ shift and go to state 25 ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 51
+
+    (20) expr -> expr MULTIPLY expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    DIVIDE          reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    MULTIPLY        reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    ADD             reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    SUBTRACT        reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    MODULUS         reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    EEQUALS         reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    GREATER         reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    SMALLER         reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    AND             reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    OR              reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    NOTEQUALS       reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    GEQUAL          reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    SEQUAL          reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    INCREMENT       reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    DECREMENT       reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    SEMIC           reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    $end            reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    LCURLY          reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    RCURLY          reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    RPARENTHESIS    reduce using rule 20 (expr -> expr MULTIPLY expr .)
+    COMMA           reduce using rule 20 (expr -> expr MULTIPLY expr .)
+
+  ! DIVIDE          [ shift and go to state 21 ]
+  ! MULTIPLY        [ shift and go to state 22 ]
+  ! ADD             [ shift and go to state 23 ]
+  ! SUBTRACT        [ shift and go to state 24 ]
+  ! MODULUS         [ shift and go to state 25 ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 52
+
+    (21) expr -> expr ADD expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    ADD             reduce using rule 21 (expr -> expr ADD expr .)
+    SUBTRACT        reduce using rule 21 (expr -> expr ADD expr .)
+    EEQUALS         reduce using rule 21 (expr -> expr ADD expr .)
+    GREATER         reduce using rule 21 (expr -> expr ADD expr .)
+    SMALLER         reduce using rule 21 (expr -> expr ADD expr .)
+    AND             reduce using rule 21 (expr -> expr ADD expr .)
+    OR              reduce using rule 21 (expr -> expr ADD expr .)
+    NOTEQUALS       reduce using rule 21 (expr -> expr ADD expr .)
+    GEQUAL          reduce using rule 21 (expr -> expr ADD expr .)
+    SEQUAL          reduce using rule 21 (expr -> expr ADD expr .)
+    INCREMENT       reduce using rule 21 (expr -> expr ADD expr .)
+    DECREMENT       reduce using rule 21 (expr -> expr ADD expr .)
+    SEMIC           reduce using rule 21 (expr -> expr ADD expr .)
+    $end            reduce using rule 21 (expr -> expr ADD expr .)
+    LCURLY          reduce using rule 21 (expr -> expr ADD expr .)
+    RCURLY          reduce using rule 21 (expr -> expr ADD expr .)
+    RPARENTHESIS    reduce using rule 21 (expr -> expr ADD expr .)
+    COMMA           reduce using rule 21 (expr -> expr ADD expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    MODULUS         shift and go to state 25
+
+  ! DIVIDE          [ reduce using rule 21 (expr -> expr ADD expr .) ]
+  ! MULTIPLY        [ reduce using rule 21 (expr -> expr ADD expr .) ]
+  ! MODULUS         [ reduce using rule 21 (expr -> expr ADD expr .) ]
+  ! ADD             [ shift and go to state 23 ]
+  ! SUBTRACT        [ shift and go to state 24 ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 53
+
+    (22) expr -> expr SUBTRACT expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    ADD             reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    SUBTRACT        reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    EEQUALS         reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    GREATER         reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    SMALLER         reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    AND             reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    OR              reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    NOTEQUALS       reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    GEQUAL          reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    SEQUAL          reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    INCREMENT       reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    DECREMENT       reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    SEMIC           reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    $end            reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    LCURLY          reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    RCURLY          reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    RPARENTHESIS    reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    COMMA           reduce using rule 22 (expr -> expr SUBTRACT expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    MODULUS         shift and go to state 25
+
+  ! DIVIDE          [ reduce using rule 22 (expr -> expr SUBTRACT expr .) ]
+  ! MULTIPLY        [ reduce using rule 22 (expr -> expr SUBTRACT expr .) ]
+  ! MODULUS         [ reduce using rule 22 (expr -> expr SUBTRACT expr .) ]
+  ! ADD             [ shift and go to state 23 ]
+  ! SUBTRACT        [ shift and go to state 24 ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 54
+
+    (23) expr -> expr MODULUS expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    DIVIDE          reduce using rule 23 (expr -> expr MODULUS expr .)
+    MULTIPLY        reduce using rule 23 (expr -> expr MODULUS expr .)
+    ADD             reduce using rule 23 (expr -> expr MODULUS expr .)
+    SUBTRACT        reduce using rule 23 (expr -> expr MODULUS expr .)
+    MODULUS         reduce using rule 23 (expr -> expr MODULUS expr .)
+    EEQUALS         reduce using rule 23 (expr -> expr MODULUS expr .)
+    GREATER         reduce using rule 23 (expr -> expr MODULUS expr .)
+    SMALLER         reduce using rule 23 (expr -> expr MODULUS expr .)
+    AND             reduce using rule 23 (expr -> expr MODULUS expr .)
+    OR              reduce using rule 23 (expr -> expr MODULUS expr .)
+    NOTEQUALS       reduce using rule 23 (expr -> expr MODULUS expr .)
+    GEQUAL          reduce using rule 23 (expr -> expr MODULUS expr .)
+    SEQUAL          reduce using rule 23 (expr -> expr MODULUS expr .)
+    INCREMENT       reduce using rule 23 (expr -> expr MODULUS expr .)
+    DECREMENT       reduce using rule 23 (expr -> expr MODULUS expr .)
+    SEMIC           reduce using rule 23 (expr -> expr MODULUS expr .)
+    $end            reduce using rule 23 (expr -> expr MODULUS expr .)
+    LCURLY          reduce using rule 23 (expr -> expr MODULUS expr .)
+    RCURLY          reduce using rule 23 (expr -> expr MODULUS expr .)
+    RPARENTHESIS    reduce using rule 23 (expr -> expr MODULUS expr .)
+    COMMA           reduce using rule 23 (expr -> expr MODULUS expr .)
+
+  ! DIVIDE          [ shift and go to state 21 ]
+  ! MULTIPLY        [ shift and go to state 22 ]
+  ! ADD             [ shift and go to state 23 ]
+  ! SUBTRACT        [ shift and go to state 24 ]
+  ! MODULUS         [ shift and go to state 25 ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 55
+
+    (24) expr -> expr EEQUALS expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MULTIPLY resolved as shift
+  ! shift/reduce conflict for ADD resolved as shift
+  ! shift/reduce conflict for SUBTRACT resolved as shift
+  ! shift/reduce conflict for MODULUS resolved as shift
+  ! shift/reduce conflict for EEQUALS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for SMALLER resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for NOTEQUALS resolved as shift
+  ! shift/reduce conflict for GEQUAL resolved as shift
+  ! shift/reduce conflict for SEQUAL resolved as shift
+  ! shift/reduce conflict for INCREMENT resolved as shift
+  ! shift/reduce conflict for DECREMENT resolved as shift
+    SEMIC           reduce using rule 24 (expr -> expr EEQUALS expr .)
+    $end            reduce using rule 24 (expr -> expr EEQUALS expr .)
+    LCURLY          reduce using rule 24 (expr -> expr EEQUALS expr .)
+    RCURLY          reduce using rule 24 (expr -> expr EEQUALS expr .)
+    RPARENTHESIS    reduce using rule 24 (expr -> expr EEQUALS expr .)
+    COMMA           reduce using rule 24 (expr -> expr EEQUALS expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+  ! DIVIDE          [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! MULTIPLY        [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! ADD             [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! SUBTRACT        [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! MODULUS         [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! EEQUALS         [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! GREATER         [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! SMALLER         [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! AND             [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! OR              [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! NOTEQUALS       [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! GEQUAL          [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! SEQUAL          [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! INCREMENT       [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+  ! DECREMENT       [ reduce using rule 24 (expr -> expr EEQUALS expr .) ]
+
+
+state 56
+
+    (25) expr -> expr GREATER expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    EEQUALS         reduce using rule 25 (expr -> expr GREATER expr .)
+    GREATER         reduce using rule 25 (expr -> expr GREATER expr .)
+    SMALLER         reduce using rule 25 (expr -> expr GREATER expr .)
+    AND             reduce using rule 25 (expr -> expr GREATER expr .)
+    OR              reduce using rule 25 (expr -> expr GREATER expr .)
+    NOTEQUALS       reduce using rule 25 (expr -> expr GREATER expr .)
+    GEQUAL          reduce using rule 25 (expr -> expr GREATER expr .)
+    SEQUAL          reduce using rule 25 (expr -> expr GREATER expr .)
+    INCREMENT       reduce using rule 25 (expr -> expr GREATER expr .)
+    DECREMENT       reduce using rule 25 (expr -> expr GREATER expr .)
+    SEMIC           reduce using rule 25 (expr -> expr GREATER expr .)
+    $end            reduce using rule 25 (expr -> expr GREATER expr .)
+    LCURLY          reduce using rule 25 (expr -> expr GREATER expr .)
+    RCURLY          reduce using rule 25 (expr -> expr GREATER expr .)
+    RPARENTHESIS    reduce using rule 25 (expr -> expr GREATER expr .)
+    COMMA           reduce using rule 25 (expr -> expr GREATER expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+
+  ! DIVIDE          [ reduce using rule 25 (expr -> expr GREATER expr .) ]
+  ! MULTIPLY        [ reduce using rule 25 (expr -> expr GREATER expr .) ]
+  ! ADD             [ reduce using rule 25 (expr -> expr GREATER expr .) ]
+  ! SUBTRACT        [ reduce using rule 25 (expr -> expr GREATER expr .) ]
+  ! MODULUS         [ reduce using rule 25 (expr -> expr GREATER expr .) ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 57
+
+    (26) expr -> expr SMALLER expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    EEQUALS         reduce using rule 26 (expr -> expr SMALLER expr .)
+    GREATER         reduce using rule 26 (expr -> expr SMALLER expr .)
+    SMALLER         reduce using rule 26 (expr -> expr SMALLER expr .)
+    AND             reduce using rule 26 (expr -> expr SMALLER expr .)
+    OR              reduce using rule 26 (expr -> expr SMALLER expr .)
+    NOTEQUALS       reduce using rule 26 (expr -> expr SMALLER expr .)
+    GEQUAL          reduce using rule 26 (expr -> expr SMALLER expr .)
+    SEQUAL          reduce using rule 26 (expr -> expr SMALLER expr .)
+    INCREMENT       reduce using rule 26 (expr -> expr SMALLER expr .)
+    DECREMENT       reduce using rule 26 (expr -> expr SMALLER expr .)
+    SEMIC           reduce using rule 26 (expr -> expr SMALLER expr .)
+    $end            reduce using rule 26 (expr -> expr SMALLER expr .)
+    LCURLY          reduce using rule 26 (expr -> expr SMALLER expr .)
+    RCURLY          reduce using rule 26 (expr -> expr SMALLER expr .)
+    RPARENTHESIS    reduce using rule 26 (expr -> expr SMALLER expr .)
+    COMMA           reduce using rule 26 (expr -> expr SMALLER expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+
+  ! DIVIDE          [ reduce using rule 26 (expr -> expr SMALLER expr .) ]
+  ! MULTIPLY        [ reduce using rule 26 (expr -> expr SMALLER expr .) ]
+  ! ADD             [ reduce using rule 26 (expr -> expr SMALLER expr .) ]
+  ! SUBTRACT        [ reduce using rule 26 (expr -> expr SMALLER expr .) ]
+  ! MODULUS         [ reduce using rule 26 (expr -> expr SMALLER expr .) ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 58
+
+    (27) expr -> expr AND expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    EEQUALS         reduce using rule 27 (expr -> expr AND expr .)
+    AND             reduce using rule 27 (expr -> expr AND expr .)
+    OR              reduce using rule 27 (expr -> expr AND expr .)
+    NOTEQUALS       reduce using rule 27 (expr -> expr AND expr .)
+    INCREMENT       reduce using rule 27 (expr -> expr AND expr .)
+    DECREMENT       reduce using rule 27 (expr -> expr AND expr .)
+    SEMIC           reduce using rule 27 (expr -> expr AND expr .)
+    $end            reduce using rule 27 (expr -> expr AND expr .)
+    LCURLY          reduce using rule 27 (expr -> expr AND expr .)
+    RCURLY          reduce using rule 27 (expr -> expr AND expr .)
+    RPARENTHESIS    reduce using rule 27 (expr -> expr AND expr .)
+    COMMA           reduce using rule 27 (expr -> expr AND expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+
+  ! DIVIDE          [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! MULTIPLY        [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! ADD             [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! SUBTRACT        [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! MODULUS         [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! GREATER         [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! SMALLER         [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! GEQUAL          [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! SEQUAL          [ reduce using rule 27 (expr -> expr AND expr .) ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 59
+
+    (28) expr -> expr OR expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    EEQUALS         reduce using rule 28 (expr -> expr OR expr .)
+    AND             reduce using rule 28 (expr -> expr OR expr .)
+    OR              reduce using rule 28 (expr -> expr OR expr .)
+    NOTEQUALS       reduce using rule 28 (expr -> expr OR expr .)
+    INCREMENT       reduce using rule 28 (expr -> expr OR expr .)
+    DECREMENT       reduce using rule 28 (expr -> expr OR expr .)
+    SEMIC           reduce using rule 28 (expr -> expr OR expr .)
+    $end            reduce using rule 28 (expr -> expr OR expr .)
+    LCURLY          reduce using rule 28 (expr -> expr OR expr .)
+    RCURLY          reduce using rule 28 (expr -> expr OR expr .)
+    RPARENTHESIS    reduce using rule 28 (expr -> expr OR expr .)
+    COMMA           reduce using rule 28 (expr -> expr OR expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+
+  ! DIVIDE          [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! MULTIPLY        [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! ADD             [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! SUBTRACT        [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! MODULUS         [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! GREATER         [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! SMALLER         [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! GEQUAL          [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! SEQUAL          [ reduce using rule 28 (expr -> expr OR expr .) ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 60
+
+    (29) expr -> expr NOTEQUALS expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MULTIPLY resolved as shift
+  ! shift/reduce conflict for ADD resolved as shift
+  ! shift/reduce conflict for SUBTRACT resolved as shift
+  ! shift/reduce conflict for MODULUS resolved as shift
+  ! shift/reduce conflict for EEQUALS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for SMALLER resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for NOTEQUALS resolved as shift
+  ! shift/reduce conflict for GEQUAL resolved as shift
+  ! shift/reduce conflict for SEQUAL resolved as shift
+  ! shift/reduce conflict for INCREMENT resolved as shift
+  ! shift/reduce conflict for DECREMENT resolved as shift
+    SEMIC           reduce using rule 29 (expr -> expr NOTEQUALS expr .)
+    $end            reduce using rule 29 (expr -> expr NOTEQUALS expr .)
+    LCURLY          reduce using rule 29 (expr -> expr NOTEQUALS expr .)
+    RCURLY          reduce using rule 29 (expr -> expr NOTEQUALS expr .)
+    RPARENTHESIS    reduce using rule 29 (expr -> expr NOTEQUALS expr .)
+    COMMA           reduce using rule 29 (expr -> expr NOTEQUALS expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+  ! DIVIDE          [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! MULTIPLY        [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! ADD             [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! SUBTRACT        [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! MODULUS         [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! EEQUALS         [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! GREATER         [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! SMALLER         [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! AND             [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! OR              [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! NOTEQUALS       [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! GEQUAL          [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! SEQUAL          [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! INCREMENT       [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+  ! DECREMENT       [ reduce using rule 29 (expr -> expr NOTEQUALS expr .) ]
+
+
+state 61
+
+    (30) expr -> expr GEQUAL expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    EEQUALS         reduce using rule 30 (expr -> expr GEQUAL expr .)
+    GREATER         reduce using rule 30 (expr -> expr GEQUAL expr .)
+    SMALLER         reduce using rule 30 (expr -> expr GEQUAL expr .)
+    AND             reduce using rule 30 (expr -> expr GEQUAL expr .)
+    OR              reduce using rule 30 (expr -> expr GEQUAL expr .)
+    NOTEQUALS       reduce using rule 30 (expr -> expr GEQUAL expr .)
+    GEQUAL          reduce using rule 30 (expr -> expr GEQUAL expr .)
+    SEQUAL          reduce using rule 30 (expr -> expr GEQUAL expr .)
+    INCREMENT       reduce using rule 30 (expr -> expr GEQUAL expr .)
+    DECREMENT       reduce using rule 30 (expr -> expr GEQUAL expr .)
+    SEMIC           reduce using rule 30 (expr -> expr GEQUAL expr .)
+    $end            reduce using rule 30 (expr -> expr GEQUAL expr .)
+    LCURLY          reduce using rule 30 (expr -> expr GEQUAL expr .)
+    RCURLY          reduce using rule 30 (expr -> expr GEQUAL expr .)
+    RPARENTHESIS    reduce using rule 30 (expr -> expr GEQUAL expr .)
+    COMMA           reduce using rule 30 (expr -> expr GEQUAL expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+
+  ! DIVIDE          [ reduce using rule 30 (expr -> expr GEQUAL expr .) ]
+  ! MULTIPLY        [ reduce using rule 30 (expr -> expr GEQUAL expr .) ]
+  ! ADD             [ reduce using rule 30 (expr -> expr GEQUAL expr .) ]
+  ! SUBTRACT        [ reduce using rule 30 (expr -> expr GEQUAL expr .) ]
+  ! MODULUS         [ reduce using rule 30 (expr -> expr GEQUAL expr .) ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 62
+
+    (31) expr -> expr SEQUAL expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    EEQUALS         reduce using rule 31 (expr -> expr SEQUAL expr .)
+    GREATER         reduce using rule 31 (expr -> expr SEQUAL expr .)
+    SMALLER         reduce using rule 31 (expr -> expr SEQUAL expr .)
+    AND             reduce using rule 31 (expr -> expr SEQUAL expr .)
+    OR              reduce using rule 31 (expr -> expr SEQUAL expr .)
+    NOTEQUALS       reduce using rule 31 (expr -> expr SEQUAL expr .)
+    GEQUAL          reduce using rule 31 (expr -> expr SEQUAL expr .)
+    SEQUAL          reduce using rule 31 (expr -> expr SEQUAL expr .)
+    INCREMENT       reduce using rule 31 (expr -> expr SEQUAL expr .)
+    DECREMENT       reduce using rule 31 (expr -> expr SEQUAL expr .)
+    SEMIC           reduce using rule 31 (expr -> expr SEQUAL expr .)
+    $end            reduce using rule 31 (expr -> expr SEQUAL expr .)
+    LCURLY          reduce using rule 31 (expr -> expr SEQUAL expr .)
+    RCURLY          reduce using rule 31 (expr -> expr SEQUAL expr .)
+    RPARENTHESIS    reduce using rule 31 (expr -> expr SEQUAL expr .)
+    COMMA           reduce using rule 31 (expr -> expr SEQUAL expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+
+  ! DIVIDE          [ reduce using rule 31 (expr -> expr SEQUAL expr .) ]
+  ! MULTIPLY        [ reduce using rule 31 (expr -> expr SEQUAL expr .) ]
+  ! ADD             [ reduce using rule 31 (expr -> expr SEQUAL expr .) ]
+  ! SUBTRACT        [ reduce using rule 31 (expr -> expr SEQUAL expr .) ]
+  ! MODULUS         [ reduce using rule 31 (expr -> expr SEQUAL expr .) ]
+  ! EEQUALS         [ shift and go to state 26 ]
+  ! GREATER         [ shift and go to state 27 ]
+  ! SMALLER         [ shift and go to state 28 ]
+  ! AND             [ shift and go to state 29 ]
+  ! OR              [ shift and go to state 30 ]
+  ! NOTEQUALS       [ shift and go to state 31 ]
+  ! GEQUAL          [ shift and go to state 32 ]
+  ! SEQUAL          [ shift and go to state 33 ]
+  ! INCREMENT       [ shift and go to state 34 ]
+  ! DECREMENT       [ shift and go to state 35 ]
+
+
+state 63
+
+    (10) statement -> DECLARE ID EQUALS . expr
+    (11) statement -> DECLARE ID EQUALS . ID
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 72
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 73
+
+state 64
+
+    (13) statement -> PRINT LPARENTHESIS ID . RPARENTHESIS
+    (34) expr -> ID .
+
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+    RPARENTHESIS    shift and go to state 74
+    COMMA           reduce using rule 34 (expr -> ID .)
+    DIVIDE          reduce using rule 34 (expr -> ID .)
+    MULTIPLY        reduce using rule 34 (expr -> ID .)
+    ADD             reduce using rule 34 (expr -> ID .)
+    SUBTRACT        reduce using rule 34 (expr -> ID .)
+    MODULUS         reduce using rule 34 (expr -> ID .)
+    EEQUALS         reduce using rule 34 (expr -> ID .)
+    GREATER         reduce using rule 34 (expr -> ID .)
+    SMALLER         reduce using rule 34 (expr -> ID .)
+    AND             reduce using rule 34 (expr -> ID .)
+    OR              reduce using rule 34 (expr -> ID .)
+    NOTEQUALS       reduce using rule 34 (expr -> ID .)
+    GEQUAL          reduce using rule 34 (expr -> ID .)
+    SEQUAL          reduce using rule 34 (expr -> ID .)
+    INCREMENT       reduce using rule 34 (expr -> ID .)
+    DECREMENT       reduce using rule 34 (expr -> ID .)
+
+  ! RPARENTHESIS    [ reduce using rule 34 (expr -> ID .) ]
+
+
+state 65
+
+    (14) statement -> PRINT LPARENTHESIS expr . RPARENTHESIS
+    (15) statement -> PRINT LPARENTHESIS expr . COMMA expr RPARENTHESIS
+    (16) statement -> PRINT LPARENTHESIS expr . COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> PRINT LPARENTHESIS expr . COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 75
+    COMMA           shift and go to state 76
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 66
+
+    (40) statement -> IF expr LCURLY . statement RCURLY
+    (41) statement -> IF expr LCURLY . statement RCURLY ELSE LCURLY statement RCURLY
+    (8) statement -> . ID EQUALS expr
+    (9) statement -> . ID EQUALS ID
+    (10) statement -> . DECLARE ID EQUALS expr
+    (11) statement -> . DECLARE ID EQUALS ID
+    (12) statement -> . DECLARE ID
+    (13) statement -> . PRINT LPARENTHESIS ID RPARENTHESIS
+    (14) statement -> . PRINT LPARENTHESIS expr RPARENTHESIS
+    (15) statement -> . PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (16) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    (18) statement -> . expr
+    (40) statement -> . IF expr LCURLY statement RCURLY
+    (41) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (42) statement -> . DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+    (43) statement -> . LIST ID
+    (44) statement -> . ID DOT PUSH LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> . ID DOT PUSH LPARENTHESIS ID RPARENTHESIS
+    (46) statement -> . ID DOT POP LPARENTHESIS RPARENTHESIS
+    (47) statement -> . ID DOT POP LPARENTHESIS expr RPARENTHESIS
+    (48) statement -> . ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (49) statement -> . ID DOT INDEX LPARENTHESIS expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 5
+    DECLARE         shift and go to state 7
+    PRINT           shift and go to state 8
+    IF              shift and go to state 9
+    DO              shift and go to state 10
+    LIST            shift and go to state 11
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 6
+    statement                      shift and go to state 77
+
+state 67
+
+    (42) statement -> DO LCURLY statements . RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+    (3) statements -> statements . SEMIC statements
+    (4) statements -> statements .
+
+  ! shift/reduce conflict for RCURLY resolved as shift
+  ! shift/reduce conflict for SEMIC resolved as shift
+    RCURLY          shift and go to state 78
+    SEMIC           shift and go to state 17
+
+  ! RCURLY          [ reduce using rule 4 (statements -> statements .) ]
+  ! SEMIC           [ reduce using rule 4 (statements -> statements .) ]
+
+
+state 68
+
+    (44) statement -> ID DOT PUSH LPARENTHESIS . expr RPARENTHESIS
+    (45) statement -> ID DOT PUSH LPARENTHESIS . ID RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 79
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 80
+
+state 69
+
+    (46) statement -> ID DOT POP LPARENTHESIS . RPARENTHESIS
+    (47) statement -> ID DOT POP LPARENTHESIS . expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    RPARENTHESIS    shift and go to state 81
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 82
+
+state 70
+
+    (48) statement -> ID DOT SLICE LPARENTHESIS . expr COMMA expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 83
+
+state 71
+
+    (49) statement -> ID DOT INDEX LPARENTHESIS . expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 84
+
+state 72
+
+    (11) statement -> DECLARE ID EQUALS ID .
+    (34) expr -> ID .
+
+  ! reduce/reduce conflict for SEMIC resolved using rule 11 (statement -> DECLARE ID EQUALS ID .)
+  ! reduce/reduce conflict for $end resolved using rule 11 (statement -> DECLARE ID EQUALS ID .)
+  ! reduce/reduce conflict for RCURLY resolved using rule 11 (statement -> DECLARE ID EQUALS ID .)
+    SEMIC           reduce using rule 11 (statement -> DECLARE ID EQUALS ID .)
+    $end            reduce using rule 11 (statement -> DECLARE ID EQUALS ID .)
+    RCURLY          reduce using rule 11 (statement -> DECLARE ID EQUALS ID .)
+    DIVIDE          reduce using rule 34 (expr -> ID .)
+    MULTIPLY        reduce using rule 34 (expr -> ID .)
+    ADD             reduce using rule 34 (expr -> ID .)
+    SUBTRACT        reduce using rule 34 (expr -> ID .)
+    MODULUS         reduce using rule 34 (expr -> ID .)
+    EEQUALS         reduce using rule 34 (expr -> ID .)
+    GREATER         reduce using rule 34 (expr -> ID .)
+    SMALLER         reduce using rule 34 (expr -> ID .)
+    AND             reduce using rule 34 (expr -> ID .)
+    OR              reduce using rule 34 (expr -> ID .)
+    NOTEQUALS       reduce using rule 34 (expr -> ID .)
+    GEQUAL          reduce using rule 34 (expr -> ID .)
+    SEQUAL          reduce using rule 34 (expr -> ID .)
+    INCREMENT       reduce using rule 34 (expr -> ID .)
+    DECREMENT       reduce using rule 34 (expr -> ID .)
+
+  ! SEMIC           [ reduce using rule 34 (expr -> ID .) ]
+  ! $end            [ reduce using rule 34 (expr -> ID .) ]
+  ! RCURLY          [ reduce using rule 34 (expr -> ID .) ]
+
+
+state 73
+
+    (10) statement -> DECLARE ID EQUALS expr .
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    SEMIC           reduce using rule 10 (statement -> DECLARE ID EQUALS expr .)
+    $end            reduce using rule 10 (statement -> DECLARE ID EQUALS expr .)
+    RCURLY          reduce using rule 10 (statement -> DECLARE ID EQUALS expr .)
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 74
+
+    (13) statement -> PRINT LPARENTHESIS ID RPARENTHESIS .
+
+    SEMIC           reduce using rule 13 (statement -> PRINT LPARENTHESIS ID RPARENTHESIS .)
+    $end            reduce using rule 13 (statement -> PRINT LPARENTHESIS ID RPARENTHESIS .)
+    RCURLY          reduce using rule 13 (statement -> PRINT LPARENTHESIS ID RPARENTHESIS .)
+
+
+state 75
+
+    (14) statement -> PRINT LPARENTHESIS expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 14 (statement -> PRINT LPARENTHESIS expr RPARENTHESIS .)
+    $end            reduce using rule 14 (statement -> PRINT LPARENTHESIS expr RPARENTHESIS .)
+    RCURLY          reduce using rule 14 (statement -> PRINT LPARENTHESIS expr RPARENTHESIS .)
+
+
+state 76
+
+    (15) statement -> PRINT LPARENTHESIS expr COMMA . expr RPARENTHESIS
+    (16) statement -> PRINT LPARENTHESIS expr COMMA . expr COMMA expr RPARENTHESIS
+    (17) statement -> PRINT LPARENTHESIS expr COMMA . expr COMMA expr COMMA expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 85
+
+state 77
+
+    (40) statement -> IF expr LCURLY statement . RCURLY
+    (41) statement -> IF expr LCURLY statement . RCURLY ELSE LCURLY statement RCURLY
+
+    RCURLY          shift and go to state 86
+
+
+state 78
+
+    (42) statement -> DO LCURLY statements RCURLY . WHILE LPARENTHESIS expr RPARENTHESIS
+
+    WHILE           shift and go to state 87
+
+
+state 79
+
+    (45) statement -> ID DOT PUSH LPARENTHESIS ID . RPARENTHESIS
+    (34) expr -> ID .
+
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+    RPARENTHESIS    shift and go to state 88
+    DIVIDE          reduce using rule 34 (expr -> ID .)
+    MULTIPLY        reduce using rule 34 (expr -> ID .)
+    ADD             reduce using rule 34 (expr -> ID .)
+    SUBTRACT        reduce using rule 34 (expr -> ID .)
+    MODULUS         reduce using rule 34 (expr -> ID .)
+    EEQUALS         reduce using rule 34 (expr -> ID .)
+    GREATER         reduce using rule 34 (expr -> ID .)
+    SMALLER         reduce using rule 34 (expr -> ID .)
+    AND             reduce using rule 34 (expr -> ID .)
+    OR              reduce using rule 34 (expr -> ID .)
+    NOTEQUALS       reduce using rule 34 (expr -> ID .)
+    GEQUAL          reduce using rule 34 (expr -> ID .)
+    SEQUAL          reduce using rule 34 (expr -> ID .)
+    INCREMENT       reduce using rule 34 (expr -> ID .)
+    DECREMENT       reduce using rule 34 (expr -> ID .)
+
+  ! RPARENTHESIS    [ reduce using rule 34 (expr -> ID .) ]
+
+
+state 80
+
+    (44) statement -> ID DOT PUSH LPARENTHESIS expr . RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 89
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 81
+
+    (46) statement -> ID DOT POP LPARENTHESIS RPARENTHESIS .
+
+    SEMIC           reduce using rule 46 (statement -> ID DOT POP LPARENTHESIS RPARENTHESIS .)
+    $end            reduce using rule 46 (statement -> ID DOT POP LPARENTHESIS RPARENTHESIS .)
+    RCURLY          reduce using rule 46 (statement -> ID DOT POP LPARENTHESIS RPARENTHESIS .)
+
+
+state 82
+
+    (47) statement -> ID DOT POP LPARENTHESIS expr . RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 90
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 83
+
+    (48) statement -> ID DOT SLICE LPARENTHESIS expr . COMMA expr RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    COMMA           shift and go to state 91
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 84
+
+    (49) statement -> ID DOT INDEX LPARENTHESIS expr . RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 92
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 85
+
+    (15) statement -> PRINT LPARENTHESIS expr COMMA expr . RPARENTHESIS
+    (16) statement -> PRINT LPARENTHESIS expr COMMA expr . COMMA expr RPARENTHESIS
+    (17) statement -> PRINT LPARENTHESIS expr COMMA expr . COMMA expr COMMA expr RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 94
+    COMMA           shift and go to state 93
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 86
+
+    (40) statement -> IF expr LCURLY statement RCURLY .
+    (41) statement -> IF expr LCURLY statement RCURLY . ELSE LCURLY statement RCURLY
+
+    SEMIC           reduce using rule 40 (statement -> IF expr LCURLY statement RCURLY .)
+    $end            reduce using rule 40 (statement -> IF expr LCURLY statement RCURLY .)
+    RCURLY          reduce using rule 40 (statement -> IF expr LCURLY statement RCURLY .)
+    ELSE            shift and go to state 95
+
+
+state 87
+
+    (42) statement -> DO LCURLY statements RCURLY WHILE . LPARENTHESIS expr RPARENTHESIS
+
+    LPARENTHESIS    shift and go to state 96
+
+
+state 88
+
+    (45) statement -> ID DOT PUSH LPARENTHESIS ID RPARENTHESIS .
+
+    SEMIC           reduce using rule 45 (statement -> ID DOT PUSH LPARENTHESIS ID RPARENTHESIS .)
+    $end            reduce using rule 45 (statement -> ID DOT PUSH LPARENTHESIS ID RPARENTHESIS .)
+    RCURLY          reduce using rule 45 (statement -> ID DOT PUSH LPARENTHESIS ID RPARENTHESIS .)
+
+
+state 89
+
+    (44) statement -> ID DOT PUSH LPARENTHESIS expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 44 (statement -> ID DOT PUSH LPARENTHESIS expr RPARENTHESIS .)
+    $end            reduce using rule 44 (statement -> ID DOT PUSH LPARENTHESIS expr RPARENTHESIS .)
+    RCURLY          reduce using rule 44 (statement -> ID DOT PUSH LPARENTHESIS expr RPARENTHESIS .)
+
+
+state 90
+
+    (47) statement -> ID DOT POP LPARENTHESIS expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 47 (statement -> ID DOT POP LPARENTHESIS expr RPARENTHESIS .)
+    $end            reduce using rule 47 (statement -> ID DOT POP LPARENTHESIS expr RPARENTHESIS .)
+    RCURLY          reduce using rule 47 (statement -> ID DOT POP LPARENTHESIS expr RPARENTHESIS .)
+
+
+state 91
+
+    (48) statement -> ID DOT SLICE LPARENTHESIS expr COMMA . expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 97
+
+state 92
+
+    (49) statement -> ID DOT INDEX LPARENTHESIS expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 49 (statement -> ID DOT INDEX LPARENTHESIS expr RPARENTHESIS .)
+    $end            reduce using rule 49 (statement -> ID DOT INDEX LPARENTHESIS expr RPARENTHESIS .)
+    RCURLY          reduce using rule 49 (statement -> ID DOT INDEX LPARENTHESIS expr RPARENTHESIS .)
+
+
+state 93
+
+    (16) statement -> PRINT LPARENTHESIS expr COMMA expr COMMA . expr RPARENTHESIS
+    (17) statement -> PRINT LPARENTHESIS expr COMMA expr COMMA . expr COMMA expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 98
+
+state 94
+
+    (15) statement -> PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 15 (statement -> PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS .)
+    $end            reduce using rule 15 (statement -> PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS .)
+    RCURLY          reduce using rule 15 (statement -> PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS .)
+
+
+state 95
+
+    (41) statement -> IF expr LCURLY statement RCURLY ELSE . LCURLY statement RCURLY
+
+    LCURLY          shift and go to state 99
+
+
+state 96
+
+    (42) statement -> DO LCURLY statements RCURLY WHILE LPARENTHESIS . expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 100
+
+state 97
+
+    (48) statement -> ID DOT SLICE LPARENTHESIS expr COMMA expr . RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 101
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 98
+
+    (16) statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr . RPARENTHESIS
+    (17) statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr . COMMA expr RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 103
+    COMMA           shift and go to state 102
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 99
+
+    (41) statement -> IF expr LCURLY statement RCURLY ELSE LCURLY . statement RCURLY
+    (8) statement -> . ID EQUALS expr
+    (9) statement -> . ID EQUALS ID
+    (10) statement -> . DECLARE ID EQUALS expr
+    (11) statement -> . DECLARE ID EQUALS ID
+    (12) statement -> . DECLARE ID
+    (13) statement -> . PRINT LPARENTHESIS ID RPARENTHESIS
+    (14) statement -> . PRINT LPARENTHESIS expr RPARENTHESIS
+    (15) statement -> . PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (16) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+    (17) statement -> . PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    (18) statement -> . expr
+    (40) statement -> . IF expr LCURLY statement RCURLY
+    (41) statement -> . IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY
+    (42) statement -> . DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS
+    (43) statement -> . LIST ID
+    (44) statement -> . ID DOT PUSH LPARENTHESIS expr RPARENTHESIS
+    (45) statement -> . ID DOT PUSH LPARENTHESIS ID RPARENTHESIS
+    (46) statement -> . ID DOT POP LPARENTHESIS RPARENTHESIS
+    (47) statement -> . ID DOT POP LPARENTHESIS expr RPARENTHESIS
+    (48) statement -> . ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    (49) statement -> . ID DOT INDEX LPARENTHESIS expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 5
+    DECLARE         shift and go to state 7
+    PRINT           shift and go to state 8
+    IF              shift and go to state 9
+    DO              shift and go to state 10
+    LIST            shift and go to state 11
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 6
+    statement                      shift and go to state 104
+
+state 100
+
+    (42) statement -> DO LCURLY statements RCURLY WHILE LPARENTHESIS expr . RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 105
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 101
+
+    (48) statement -> ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 48 (statement -> ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS .)
+    $end            reduce using rule 48 (statement -> ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS .)
+    RCURLY          reduce using rule 48 (statement -> ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS .)
+
+
+state 102
+
+    (17) statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA . expr RPARENTHESIS
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MULTIPLY expr
+    (21) expr -> . expr ADD expr
+    (22) expr -> . expr SUBTRACT expr
+    (23) expr -> . expr MODULUS expr
+    (24) expr -> . expr EEQUALS expr
+    (25) expr -> . expr GREATER expr
+    (26) expr -> . expr SMALLER expr
+    (27) expr -> . expr AND expr
+    (28) expr -> . expr OR expr
+    (29) expr -> . expr NOTEQUALS expr
+    (30) expr -> . expr GEQUAL expr
+    (31) expr -> . expr SEQUAL expr
+    (32) expr -> . expr INCREMENT
+    (33) expr -> . expr DECREMENT
+    (34) expr -> . ID
+    (35) expr -> . INT
+    (36) expr -> . FLOAT
+    (37) expr -> . STRING
+    (38) expr -> . CHAR
+    (39) expr -> . BOOL
+
+    ID              shift and go to state 39
+    INT             shift and go to state 12
+    FLOAT           shift and go to state 13
+    STRING          shift and go to state 14
+    CHAR            shift and go to state 15
+    BOOL            shift and go to state 16
+
+    expr                           shift and go to state 106
+
+state 103
+
+    (16) statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 16 (statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS .)
+    $end            reduce using rule 16 (statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS .)
+    RCURLY          reduce using rule 16 (statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS .)
+
+
+state 104
+
+    (41) statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement . RCURLY
+
+    RCURLY          shift and go to state 107
+
+
+state 105
+
+    (42) statement -> DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 42 (statement -> DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS .)
+    $end            reduce using rule 42 (statement -> DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS .)
+    RCURLY          reduce using rule 42 (statement -> DO LCURLY statements RCURLY WHILE LPARENTHESIS expr RPARENTHESIS .)
+
+
+state 106
+
+    (17) statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr . RPARENTHESIS
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MULTIPLY expr
+    (21) expr -> expr . ADD expr
+    (22) expr -> expr . SUBTRACT expr
+    (23) expr -> expr . MODULUS expr
+    (24) expr -> expr . EEQUALS expr
+    (25) expr -> expr . GREATER expr
+    (26) expr -> expr . SMALLER expr
+    (27) expr -> expr . AND expr
+    (28) expr -> expr . OR expr
+    (29) expr -> expr . NOTEQUALS expr
+    (30) expr -> expr . GEQUAL expr
+    (31) expr -> expr . SEQUAL expr
+    (32) expr -> expr . INCREMENT
+    (33) expr -> expr . DECREMENT
+
+    RPARENTHESIS    shift and go to state 108
+    DIVIDE          shift and go to state 21
+    MULTIPLY        shift and go to state 22
+    ADD             shift and go to state 23
+    SUBTRACT        shift and go to state 24
+    MODULUS         shift and go to state 25
+    EEQUALS         shift and go to state 26
+    GREATER         shift and go to state 27
+    SMALLER         shift and go to state 28
+    AND             shift and go to state 29
+    OR              shift and go to state 30
+    NOTEQUALS       shift and go to state 31
+    GEQUAL          shift and go to state 32
+    SEQUAL          shift and go to state 33
+    INCREMENT       shift and go to state 34
+    DECREMENT       shift and go to state 35
+
+
+state 107
+
+    (41) statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .
+
+    SEMIC           reduce using rule 41 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
+    $end            reduce using rule 41 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
+    RCURLY          reduce using rule 41 (statement -> IF expr LCURLY statement RCURLY ELSE LCURLY statement RCURLY .)
+
+
+state 108
+
+    (17) statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS .
+
+    SEMIC           reduce using rule 17 (statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS .)
+    $end            reduce using rule 17 (statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS .)
+    RCURLY          reduce using rule 17 (statement -> PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for SEMIC in state 2 resolved as shift
+WARNING: shift/reduce conflict for SEMIC in state 4 resolved as shift
+WARNING: shift/reduce conflict for SEMIC in state 42 resolved as shift
+WARNING: shift/reduce conflict for SEMIC in state 42 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 55 resolved as shift
+WARNING: shift/reduce conflict for MULTIPLY in state 55 resolved as shift
+WARNING: shift/reduce conflict for ADD in state 55 resolved as shift
+WARNING: shift/reduce conflict for SUBTRACT in state 55 resolved as shift
+WARNING: shift/reduce conflict for MODULUS in state 55 resolved as shift
+WARNING: shift/reduce conflict for EEQUALS in state 55 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 55 resolved as shift
+WARNING: shift/reduce conflict for SMALLER in state 55 resolved as shift
+WARNING: shift/reduce conflict for AND in state 55 resolved as shift
+WARNING: shift/reduce conflict for OR in state 55 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUALS in state 55 resolved as shift
+WARNING: shift/reduce conflict for GEQUAL in state 55 resolved as shift
+WARNING: shift/reduce conflict for SEQUAL in state 55 resolved as shift
+WARNING: shift/reduce conflict for INCREMENT in state 55 resolved as shift
+WARNING: shift/reduce conflict for DECREMENT in state 55 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 60 resolved as shift
+WARNING: shift/reduce conflict for MULTIPLY in state 60 resolved as shift
+WARNING: shift/reduce conflict for ADD in state 60 resolved as shift
+WARNING: shift/reduce conflict for SUBTRACT in state 60 resolved as shift
+WARNING: shift/reduce conflict for MODULUS in state 60 resolved as shift
+WARNING: shift/reduce conflict for EEQUALS in state 60 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 60 resolved as shift
+WARNING: shift/reduce conflict for SMALLER in state 60 resolved as shift
+WARNING: shift/reduce conflict for AND in state 60 resolved as shift
+WARNING: shift/reduce conflict for OR in state 60 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUALS in state 60 resolved as shift
+WARNING: shift/reduce conflict for GEQUAL in state 60 resolved as shift
+WARNING: shift/reduce conflict for SEQUAL in state 60 resolved as shift
+WARNING: shift/reduce conflict for INCREMENT in state 60 resolved as shift
+WARNING: shift/reduce conflict for DECREMENT in state 60 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 64 resolved as shift
+WARNING: shift/reduce conflict for RCURLY in state 67 resolved as shift
+WARNING: shift/reduce conflict for SEMIC in state 67 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 79 resolved as shift
+WARNING: reduce/reduce conflict in state 2 resolved using rule (start -> statements)
+WARNING: rejected rule (statements -> statements) in state 2
+WARNING: reduce/reduce conflict in state 42 resolved using rule (statements -> statements SEMIC statements)
+WARNING: rejected rule (statements -> statements) in state 42
+WARNING: reduce/reduce conflict in state 44 resolved using rule (statement -> ID EQUALS ID)
+WARNING: rejected rule (expr -> ID) in state 44
+WARNING: reduce/reduce conflict in state 72 resolved using rule (statement -> DECLARE ID EQUALS ID)
+WARNING: rejected rule (expr -> ID) in state 72
+WARNING: Rule (statements -> statements) is never reduced

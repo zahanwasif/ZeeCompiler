@@ -39,9 +39,7 @@ tokens = [
 reserved = {
     'if' : "IF",
     'else' : "ELSE",
-    'loop' : 'LOOP',
     'print': 'PRINT',
-    'var' : 'VAR',
     'inc' : 'INCREMENT',
     'dec' : 'DECREMENT',
     'declare': 'DECLARE',
@@ -49,7 +47,9 @@ reserved = {
     'while' : 'WHILE',
     'list' : 'LIST',
     'push': 'PUSH',
-    'pop' : 'POP'
+    'pop' : 'POP',
+    'slice':'SLICE',
+    'index':'INDEX'
 }
 
 # Adding reserved words into the token list

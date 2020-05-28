@@ -1,0 +1,16 @@
+print("Loop file") ;
+declare i = 0 ;
+declare j = 0 ;
+declare k = 0 ;
+do { 
+j = 0 ;
+do {
+k = 0 ;
+do {
+print(i,j,k) ;
+k inc
+} while (k<5) ;
+j inc 
+} while (j<5) ;
+i inc 
+} while (i<5)

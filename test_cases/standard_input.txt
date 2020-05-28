@@ -1,0 +1,8 @@
+declare std ="STANDARD INPUT"; 
+print (std) ;
+declare x = 5 ;
+declare y = TRUE ;
+declare z = 2 ;
+print (x) ;
+print (y) ;
+print (z) 

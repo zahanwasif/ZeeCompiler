@@ -3,6 +3,7 @@ import ply.lex as lex
 import ply.yacc as yacc
 from lexer import tokens
 import lexer
+from interpreter import runFile
 
 
 precedence=(
@@ -20,7 +21,6 @@ def p_start(p):
            | empty
     '''
     try:
-        print(p[1])
         run(p[1])
     except:
         pass
@@ -49,7 +49,6 @@ def p_empty(p):
     empty :
     '''
     pass
-
 
 def p_statement_equal(p):
     '''
@@ -93,7 +92,23 @@ def p_statement_print_expr(p):
     '''
     p[0] = ('print' , p[3] , 'expr')
 
+def p_statement_print_2(p):
+    '''
+    statement : PRINT LPARENTHESIS expr COMMA expr RPARENTHESIS
+    '''
+    p[0] = ('print' , p[3] , p[5], 'expr')
 
+def p_statement_print_3(p):
+    '''
+    statement : PRINT LPARENTHESIS expr COMMA expr COMMA expr RPARENTHESIS
+    '''
+    p[0] = ('print' , p[3] , p[5], p[7], 'expr')
+
+def p_statement_print_4(p):
+    '''
+    statement : PRINT LPARENTHESIS expr COMMA expr COMMA expr COMMA expr RPARENTHESIS
+    '''
+    p[0] = ('print' , p[3] , p[5], p[7], p[9], 'expr')
 
 def p_statement(p):
     '''
@@ -141,6 +156,7 @@ def p_unary_opr(p):
     '''
     p[0]=(p[2],p[1])
 
+
 def p_expr_ID(p):
     '''
     expr : ID
@@ -182,6 +198,7 @@ def p_list(p):
     '''
     p[0] = ('list' , p[2])
 
+
 def p_push(p):
     '''
     statement : ID DOT PUSH LPARENTHESIS expr RPARENTHESIS
@@ -205,6 +222,18 @@ def p_pop_var(p):
     statement : ID DOT POP LPARENTHESIS expr RPARENTHESIS
     '''
     p[0] = ('pop' , p[1] , p[5])
+
+def p_slice(p):
+    '''
+    statement : ID DOT SLICE LPARENTHESIS expr COMMA expr RPARENTHESIS
+    '''
+    p[0] = ('slice' , p[1], p[5],p[7])
+
+def p_index(p):
+    '''
+    statement : ID DOT INDEX LPARENTHESIS expr RPARENTHESIS
+    '''
+    p[0] = ('index' , p[1], p[5])
 
 def p_error(p):
     print("SYNTAX ERROR")
@@ -234,7 +263,7 @@ def run(p):
                 raise Exception
             else:
                 if p[3] == 'expr':
-                    dic[p[1]] = p[2]
+                    dic[p[1]] = run(p[2])
                 else:
                     if p[2] not in dic:
                         print("'%s' is not declared yet" % p[2])
@@ -247,8 +276,11 @@ def run(p):
             else:
                 dic[p[1]] = None
         elif p[0] == 'print':
-            if p[2] == 'expr':
-                print(run(p[1]))
+            if p[-1] == 'expr':
+                y = p[1:-1]
+                for x in y:
+                    print(run(x), end=' ')
+                print('\n')
             else:
                 y = p[1]
                 if y in dic:
@@ -289,14 +321,71 @@ def run(p):
                         raise Exception
                 else:
                     dic[p[1]].pop(len(dic[p[1]])-1)
+        elif p[0] == 'index':
+            if p[1] not in dic:
+                print("'%s' is not declared yet" % p[1])
+                raise Exception
+            elif type(dic[p[1]]) is not list:
+                print("'%s' is not declared as a list" % p[1])
+                raise Exception
+            else:
+                if len(dic[p[1]]) <= run(p[2]):
+                    print("The index is out of range")
+                    raise Exception
+                else:
+                    z = dic[p[1]][run(p[2])]
+                    print(z)
+                    return z
+        elif p[0] == 'slice':
+            if p[1] not in dic:
+                print("'%s' is not declared yet" % p[1])
+                raise Exception
+            elif type(dic[p[1]]) is not list:
+                print("'%s' is not declared as a list" % p[1])
+                raise Exception
+            else:
+                if len(dic[p[1]]) <= p[3]:
+                    print("The index is out of range")
+                    raise Exception
+                else:
+                    y = dic[p[1]][p[2]:p[3]]
+                    print(y)
         elif p[0]=='+':
-            return run(p[1]) + run(p[2])
+            if (type(run(p[1])) is int or type(run(p[1])) is float) and (type(run(p[2])) is int or type(run(p[2])) is float):
+                return run(p[1]) + run(p[2])
+            elif (type(run(p[1])) is str) and (type(run(p[2])) is str):
+                return run(p[1]) + run(p[2])
+            else:
+                print("string and numbers cannot be added together") 
+                raise Exception
         elif p[0]=='-':
-            return run(p[1]) - run(p[2])
+            if (type(run(p[1])) is int or type(run(p[1])) is float) and (type(run(p[2])) is int or type(run(p[2])) is float):
+                return run(p[1]) - run(p[2])
+            elif (type(run(p[1])) is str) and (type(run(p[2])) is str):
+                return run(p[1]) - run(p[2])
+            else:
+                print("string and numbers cannot be subtracted together") 
+                raise Exception
         elif p[0] == '*':
-            return run(p[1]) * run(p[2])
+            if (type(run(p[1])) is int or type(run(p[1])) is float) and (type(run(p[2])) is int or type(run(p[2])) is float):
+                return run(p[1]) * run(p[2])
+            elif (type(run(p[1])) is str) and (type(run(p[2])) is str):
+                return run(p[1]) * run(p[2])
+            else:
+                print("string and numbers cannot be multiplied together") 
+                raise Exception
         elif p[0] == '/':
-            return run(p[1]) / run(p[2])
+            if run(p[2]) == 0:
+                print("Cannot be divided by 0") 
+                raise Exception
+            else:
+                if (type(run(p[1])) is int or type(run(p[1])) is float) and (type(run(p[2])) is int or type(run(p[2])) is float):
+                    return run(p[1]) / run(p[2])
+                elif (type(run(p[1])) is str) and (type(run(p[2])) is str):
+                    return run(p[1]) / run(p[2])
+                else:
+                    print("string and numbers cannot be divided together") 
+                    raise Exception
         elif p[0]=='%':
             return run(p[1]) % run(p[2])
         elif p[0]=='&&':
@@ -351,12 +440,17 @@ def run(p):
 lex.lex(module = lexer)
 parser = yacc.yacc()
 
-while True:
-    try:
-        data = input("ZEE >>> ")
-    except EOFError:
-        break
-    if data == "":
-        continue
-    parser.parse(data)
+files = runFile()
 
+if files == []:
+    while True:
+        try:
+            data = input("ZEE >>> ")
+        except EOFError:
+            break
+        if data == "":
+            continue
+        parser.parse(data)
+else:
+    for x in files:
+        parser.parse(x)

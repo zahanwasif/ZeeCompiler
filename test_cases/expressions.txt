@@ -1,0 +1,9 @@
+print("Expressions File") ;
+declare st = "Theory" + "of" + "Automata" ;
+print (st) ;
+declare lol = 24 ;
+declare lol2 = 234 ;
+declare lol3 = a + b ;
+print (lol) ;
+print (lol2) ;
+print (lol3)
