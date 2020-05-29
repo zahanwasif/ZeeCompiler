@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 import ply.lex as lex
 import ply.yacc as yacc
 from lexer import tokens
@@ -439,8 +440,7 @@ def run(p):
 
 lex.lex(module = lexer)
 parser = yacc.yacc()
-
-files = runFile()
+files = runFile(sys.argv[1])
 
 if files == []:
     while True:
