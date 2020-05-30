@@ -440,7 +440,11 @@ def run(p):
 
 lex.lex(module = lexer)
 parser = yacc.yacc()
-files = runFile(sys.argv[1])
+arg = sys.argv
+del arg[0]
+files = []
+if arg != []:
+    files = runFile(arg)
 
 if files == []:
     while True:
